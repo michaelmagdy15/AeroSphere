@@ -3,6 +3,8 @@ import { Sidebar } from './components/layout/Sidebar';
 import { Header } from './components/layout/Header';
 import { GlassPanel } from './components/layout/GlassPanel';
 import { AuthScreen } from './components/common/AuthScreen';
+import { useSimConnect } from './hooks/useSimConnect';
+import { useLOD } from './hooks/useLOD';
 import './App.css';
 
 /* ── Lazy page imports — resilient to missing files ─────── */
@@ -44,6 +46,10 @@ export function App() {
   const [activePage, setActivePage] = useState<PageId>('dashboard');
   const [user, setUser] = useState<any>(null);
   const [authLoading, setAuthLoading] = useState(true);
+  const [updateStatus, setUpdateStatus] = useState<any>(null);
+
+  const { telemetry, isConnected: simConnected } = useSimConnect();
+  const { lodState } = useLOD();
 
   useEffect(() => {
     const api = (window as any).aerosphere;
@@ -62,8 +68,20 @@ export function App() {
       setAuthLoading(false);
     });
 
+    const handleUpdateStatus = (statusData: any) => {
+      console.log('[Renderer] Auto-updater status received:', statusData);
+      setUpdateStatus(statusData);
+    };
+
+    if (api.on) {
+      api.on('update:status', handleUpdateStatus);
+    }
+
     return () => {
       if (typeof unsubscribe === 'function') unsubscribe();
+      if (api.off) {
+        api.off('update:status', handleUpdateStatus);
+      }
     };
   }, []);
 
@@ -96,7 +114,11 @@ export function App() {
     <div className="app-layout">
       <Sidebar activePage={activePage} onNavigate={(p) => setActivePage(p as PageId)} />
       <main className="app-main">
-        <Header simConnected={false} fps={42} altitude={35000} />
+        <Header 
+          simConnected={simConnected} 
+          fps={lodState.currentFPS ?? 0} 
+          altitude={telemetry.altitude ?? 0} 
+        />
         <div className="app-content">
           <Suspense fallback={<PageSpinner />}>
             <div className="page-transition" key={activePage}>
@@ -105,6 +127,40 @@ export function App() {
           </Suspense>
         </div>
       </main>
+
+      {/* Glassmorphic Toast Notification for Updates */}
+      {updateStatus && updateStatus.status !== 'not-available' && (
+        <div className={`update-toast update-toast--${updateStatus.status}`}>
+          <div className="update-toast__blur" />
+          <div className="update-toast__content">
+            <span className="update-toast__icon">
+              {updateStatus.status === 'checking' && '🔄'}
+              {updateStatus.status === 'available' && '📥'}
+              {updateStatus.status === 'downloaded' && '✨'}
+              {updateStatus.status === 'error' && '⚠️'}
+            </span>
+            <div className="update-toast__text">
+              <div className="update-toast__title">
+                {updateStatus.status === 'checking' && 'Checking for updates...'}
+                {updateStatus.status === 'available' && `New update available: v${updateStatus.version}`}
+                {updateStatus.status === 'downloaded' && 'Update downloaded!'}
+                {updateStatus.status === 'error' && 'Update failed'}
+              </div>
+              <div className="update-toast__description">
+                {updateStatus.status === 'checking' && 'Scanning GitHub Releases...'}
+                {updateStatus.status === 'available' && 'Downloading in background...'}
+                {updateStatus.status === 'downloaded' && 'Restarting app in 5 seconds to install...'}
+                {updateStatus.status === 'error' && (updateStatus.message || 'An error occurred during update.')}
+              </div>
+            </div>
+            {updateStatus.status === 'error' && (
+              <button className="update-toast__close" onClick={() => setUpdateStatus(null)}>
+                Dismiss
+              </button>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -91,3 +91,116 @@
   text-align: center;
   line-height: 1.7;
 }
+
+/* ── Update Toast (Auto-Updater Notification) ─────────────── */
+.update-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 380px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-glass);
+  background: rgba(20, 20, 25, 0.7);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  animation: toastSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  overflow: hidden;
+}
+
+.update-toast__blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(16px);
+  z-index: -1;
+}
+
+.update-toast__content {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 12px;
+  position: relative;
+}
+
+.update-toast__icon {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.update-toast--checking .update-toast__icon {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+.update-toast--available .update-toast__icon {
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}
+
+.update-toast--downloaded .update-toast__icon {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+.update-toast--error .update-toast__icon {
+  border-color: var(--accent-red);
+  color: var(--accent-red);
+}
+
+.update-toast__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.update-toast__title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.update-toast__description {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.update-toast__close {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.2s ease;
+}
+
+.update-toast__close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+

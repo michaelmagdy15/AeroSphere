@@ -54,7 +54,7 @@ function createWindow(): BrowserWindow {
     backgroundColor: '#0a0e17',
     show: false,
     webPreferences: {
-      preload: join(__dirname, '../preload/index.js'),
+      preload: join(__dirname, '../preload/preload.js'),
       contextIsolation: true,
       nodeIntegration: false,
       sandbox: false,
@@ -287,25 +287,34 @@ app.whenReady().then(() => {
   // 10. Auto-updater setup
   autoUpdater.on('checking-for-update', () => {
     console.log('[AutoUpdater] Checking for updates...');
+    mainWindow?.webContents.send('update:status', { status: 'checking' });
   });
   autoUpdater.on('update-available', (info) => {
     console.log('[AutoUpdater] Update available:', info.version);
+    mainWindow?.webContents.send('update:status', { status: 'available', version: info.version });
   });
   autoUpdater.on('update-not-available', () => {
     console.log('[AutoUpdater] Update not available.');
+    mainWindow?.webContents.send('update:status', { status: 'not-available' });
   });
   autoUpdater.on('error', (err) => {
     console.error('[AutoUpdater] Error in auto-updater:', err);
+    mainWindow?.webContents.send('update:status', { status: 'error', message: err.message });
   });
   autoUpdater.on('update-downloaded', (info) => {
     console.log('[AutoUpdater] Update downloaded. Will install on restart.');
-    autoUpdater.quitAndInstall();
+    mainWindow?.webContents.send('update:status', { status: 'downloaded', version: info.version });
+    setTimeout(() => {
+      autoUpdater.quitAndInstall();
+    }, 5000);
   });
 
   if (app.isPackaged) {
     autoUpdater.checkForUpdatesAndNotify().catch((err) => {
       console.error('[AutoUpdater] Check failed:', err);
     });
+  } else {
+    console.log('[AutoUpdater] Running in development mode. Auto-updater will check once packaged.');
   }
 
   // ── Cleanup on quit ──

@@ -82,6 +82,17 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 export function Sidebar({ activePage, onNavigate }: SidebarProps) {
+  const [appVersion, setAppVersion] = React.useState('v0.2.1 alpha');
+
+  React.useEffect(() => {
+    const api = (window as any).aerosphere;
+    if (api && api.getAppVersion) {
+      api.getAppVersion().then((v: string) => {
+        setAppVersion(`v${v}`);
+      }).catch(console.error);
+    }
+  }, []);
+
   return (
     <aside className="sidebar">
       {/* Logo */}
@@ -115,7 +126,7 @@ export function Sidebar({ activePage, onNavigate }: SidebarProps) {
       <div className="sidebar__footer">
         <div className="sidebar__version">
           <span className="sidebar__version-dot" />
-          <span className="sidebar__version-label">v0.1.0 alpha</span>
+          <span className="sidebar__version-label">{appVersion}</span>
         </div>
       </div>
     </aside>

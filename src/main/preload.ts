@@ -2,6 +2,8 @@ import { contextBridge, ipcRenderer } from 'electron';
 import { IPC } from '../shared/ipc-channels';
 import type { LODSettings, LODState, Telemetry } from '../shared/types';
 
+const listeners = new Map<string, Map<(...args: any[]) => void, (_e: any, ...args: any[]) => void>>();
+
 const api = {
   // Request/response
   getLODState: (): Promise<LODState> => ipcRenderer.invoke(IPC.LOD_STATE),
@@ -43,6 +45,28 @@ const api = {
     const handler = (_e: Electron.IpcRendererEvent, state: any) => cb(state);
     ipcRenderer.on(IPC.AUTH_STATE, handler);
     return () => ipcRenderer.removeListener(IPC.AUTH_STATE, handler);
+  },
+
+  // Generic IPC Bridge to support hooks
+  getAppVersion: (): Promise<string> => ipcRenderer.invoke(IPC.APP_VERSION),
+  invoke: (channel: string, ...args: any[]): Promise<any> => ipcRenderer.invoke(channel, ...args),
+  on: (channel: string, cb: (...args: any[]) => void) => {
+    const handler = (_e: any, ...args: any[]) => cb(...args);
+    if (!listeners.has(channel)) {
+      listeners.set(channel, new Map());
+    }
+    listeners.get(channel)!.set(cb, handler);
+    ipcRenderer.on(channel, handler);
+  },
+  off: (channel: string, cb: (...args: any[]) => void) => {
+    const channelListeners = listeners.get(channel);
+    if (channelListeners) {
+      const handler = channelListeners.get(cb);
+      if (handler) {
+        ipcRenderer.removeListener(channel, handler);
+        channelListeners.delete(cb);
+      }
+    }
   },
 } as const;
 
