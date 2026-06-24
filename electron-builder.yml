@@ -15,5 +15,6 @@ nsis:
   allowToChangeInstallationDirectory: true
   shortcutName: AeroSphere Studio
 publish:
-  provider: generic
-  url: https://update.aerosphere.app
+  provider: github
+  owner: michaelmagdy15
+  repo: AeroSphere

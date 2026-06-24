@@ -5,6 +5,7 @@
 
 import { app, BrowserWindow } from 'electron';
 import { join } from 'path';
+import { autoUpdater } from 'electron-updater';
 import { IPC } from '../shared/ipc-channels';
 import { SIMCONNECT_RETRY_MS, LOD_UPDATE_INTERVAL_MS } from '../shared/constants';
 import type { Telemetry, LODSettings } from '../shared/types';
@@ -282,6 +283,30 @@ app.whenReady().then(() => {
   // 9. Start loops
   startReconnectLoop(simConnect);
   startLODUpdateLoop(simConnect, lodPatcher, lodController, fpsMonitor);
+
+  // 10. Auto-updater setup
+  autoUpdater.on('checking-for-update', () => {
+    console.log('[AutoUpdater] Checking for updates...');
+  });
+  autoUpdater.on('update-available', (info) => {
+    console.log('[AutoUpdater] Update available:', info.version);
+  });
+  autoUpdater.on('update-not-available', () => {
+    console.log('[AutoUpdater] Update not available.');
+  });
+  autoUpdater.on('error', (err) => {
+    console.error('[AutoUpdater] Error in auto-updater:', err);
+  });
+  autoUpdater.on('update-downloaded', (info) => {
+    console.log('[AutoUpdater] Update downloaded. Will install on restart.');
+    autoUpdater.quitAndInstall();
+  });
+
+  if (app.isPackaged) {
+    autoUpdater.checkForUpdatesAndNotify().catch((err) => {
+      console.error('[AutoUpdater] Check failed:', err);
+    });
+  }
 
   // ── Cleanup on quit ──
   const doCleanup = () => cleanup(simConnect, lodPatcher, signaling, peerManager, careerDb);
