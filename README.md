@@ -12,10 +12,10 @@ A unified, high-performance desktop co-op, career, and performance suite for **M
 ## 📸 Application Screenshots
 
 ### 1. Main Dashboard
-![Main Dashboard](docs/images/dashboard_preview.png)
+![Main Dashboard](docs/images/dashboard_preiview.png)
 
 ### 2. Dynamic LOD Engine
-![Dynamic LOD Engine](docs/images/lod_engine.png)
+![Dynamic LOD Engine](docs/images/lod_engiine.png)
 
 ### 3. Shared Cockpit Panel
 ![Shared Cockpit Panel](docs/images/shared_cockpit.png)
