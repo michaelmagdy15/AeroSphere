@@ -7,7 +7,7 @@ import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 import { requireAuth } from '../middleware/auth';
 
 const router = Router();
-const db = () => getFirestore();
+const db = () => getFirestore('db-aerosphere');
 
 // ── User document schema ──
 interface UserDoc {

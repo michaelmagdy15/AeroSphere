@@ -7,7 +7,7 @@ import { getFirestore, FieldValue, Timestamp } from 'firebase-admin/firestore';
 import { requireAuth, optionalAuth } from '../middleware/auth';
 
 const router = Router();
-const db = () => getFirestore();
+const db = () => getFirestore('db-aerosphere');
 
 const MAX_UPLOADS_PER_DAY = 10;
 const DEFAULT_LIMIT = 20;
@@ -152,7 +152,7 @@ router.post('/', requireAuth, async (req: Request, res: Response): Promise<void>
 
 // ── GET /api/profiles/:id — get specific profile ──
 router.get('/:id', async (req: Request, res: Response): Promise<void> => {
-  const doc = await db().collection('profiles').doc(req.params.id).get();
+  const doc = await db().collection('profiles').doc(req.params.id as string).get();
   if (!doc.exists) {
     res.status(404).json({ error: 'Profile not found' });
     return;
@@ -165,7 +165,7 @@ router.get('/:id', async (req: Request, res: Response): Promise<void> => {
 
 // ── GET /api/profiles/:id/download — download profile JSON ──
 router.get('/:id/download', optionalAuth, async (req: Request, res: Response): Promise<void> => {
-  const ref = db().collection('profiles').doc(req.params.id);
+  const ref = db().collection('profiles').doc(req.params.id as string);
   const doc = await ref.get();
   if (!doc.exists) {
     res.status(404).json({ error: 'Profile not found' });
@@ -198,7 +198,7 @@ router.post('/:id/rate', requireAuth, async (req: Request, res: Response): Promi
     return;
   }
 
-  const profileRef = db().collection('profiles').doc(req.params.id);
+  const profileRef = db().collection('profiles').doc(req.params.id as string);
   const ratingRef = profileRef.collection('ratings').doc(uid);
 
   await db().runTransaction(async (tx) => {

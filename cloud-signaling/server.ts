@@ -27,13 +27,13 @@ function send(ws: WebSocket, msg: SignalMessage): void {
   if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(msg));
 }
 
-wss.on('connection', (ws) => {
+wss.on('connection', (ws: WebSocket) => {
   const peerId = randomUUID();
   alive.set(ws, true);
 
   ws.on('pong', () => alive.set(ws, true));
 
-  ws.on('message', (raw) => {
+  ws.on('message', (raw: any) => {
     let msg: SignalMessage;
     try { msg = JSON.parse(raw.toString()); } catch { return; }
 
