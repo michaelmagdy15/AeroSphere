@@ -50,7 +50,7 @@ const DEFAULTS: AppSettings = {
   lodEnabled: false,
 
   defaultRole: 'pf',
-  signalingServerUrl: 'wss://signal.aerosphere.app',
+  signalingServerUrl: 'wss://aerosphere-signaling-430356395102.us-central1.run.app',
   pushToTalkKey: 'CapsLock',
 
   pilotName: 'Pilot',

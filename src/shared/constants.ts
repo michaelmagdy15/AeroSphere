@@ -3,7 +3,7 @@
 // ═══════════════════════════════════════════════════════
 
 export const APP_NAME = 'AeroSphere Studio';
-export const APP_VERSION = '0.2.1';
+export const APP_VERSION = '0.2.2';
 
 // SimConnect
 export const SIMCONNECT_RETRY_MS = 5000;
@@ -28,7 +28,7 @@ export const MSFS_TLOD_VALID_MIN = 10;
 export const MSFS_TLOD_VALID_MAX = 1500;
 
 // Networking
-export const SIGNALING_URL = 'wss://signal.aerosphere.app';
+export const SIGNALING_URL = 'wss://aerosphere-signaling-430356395102.us-central1.run.app';
 export const STUN_SERVERS = [
   'stun:stun.l.google.com:19302',
   'stun:stun1.l.google.com:19302',

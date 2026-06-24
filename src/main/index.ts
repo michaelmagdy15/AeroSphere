@@ -8,7 +8,7 @@ import { join } from 'path';
 import { autoUpdater } from 'electron-updater';
 import { IPC } from '../shared/ipc-channels';
 import { SIMCONNECT_RETRY_MS, LOD_UPDATE_INTERVAL_MS } from '../shared/constants';
-import type { Telemetry, LODSettings } from '../shared/types';
+import type { Telemetry, LODSettings, PeerInfo } from '../shared/types';
 
 // ── Manager imports ──
 
@@ -232,12 +232,74 @@ app.whenReady().then(() => {
   const signaling = new SignalingClient(signalingUrl);
   const peerManager = new PeerManager(signaling);
 
-  // Forward connection state to renderer
+  let currentRoomCode: string | null = null;
+  let activePeers: PeerInfo[] = [];
+
+  const sendConnectionState = (status: 'disconnected' | 'connecting' | 'connected') => {
+    mainWindow?.webContents.send(IPC.COCKPIT_CONNECTION_STATE, {
+      status,
+      mode: peerManager.mode || 'p2p',
+      roomCode: currentRoomCode,
+      peers: activePeers,
+    });
+  };
+
+  // Forward connection state and signaling room events to renderer
   signaling.on('connected', () => {
-    mainWindow?.webContents.send(IPC.COCKPIT_CONNECTION_STATE, { status: 'connected' });
+    sendConnectionState('disconnected');
   });
+
+  signaling.on('created', (msg) => {
+    currentRoomCode = msg.code || null;
+    activePeers = [];
+    peerManager.createHost();
+    sendConnectionState('connecting');
+  });
+
+  signaling.on('joined', (msg) => {
+    currentRoomCode = msg.code || null;
+    activePeers = [];
+    if (msg.peers) {
+      msg.peers.forEach((p: any) => {
+        activePeers.push({
+          id: p.id,
+          name: p.name || 'Pilot',
+          role: p.role || 'pf',
+          ping: p.ping || 0,
+        });
+      });
+    }
+    peerManager.joinAsGuest();
+    sendConnectionState('connecting');
+  });
+
+  signaling.on('peer-joined', (msg) => {
+    if (msg.senderId) {
+      if (!activePeers.some(p => p.id === msg.senderId)) {
+        activePeers.push({
+          id: msg.senderId,
+          name: msg.name || 'Co-Pilot',
+          role: 'pm',
+          ping: 0,
+        });
+      }
+      sendConnectionState('connecting');
+    }
+  });
+
   signaling.on('disconnected', () => {
-    mainWindow?.webContents.send(IPC.COCKPIT_CONNECTION_STATE, { status: 'disconnected' });
+    currentRoomCode = null;
+    activePeers = [];
+    sendConnectionState('disconnected');
+  });
+
+  peerManager.on('connected', () => {
+    sendConnectionState('connected');
+  });
+
+  peerManager.on('disconnected', () => {
+    activePeers = [];
+    sendConnectionState('disconnected');
   });
 
   // 6. Career

@@ -1,6 +1,6 @@
 {
   "name": "aerosphere-studio",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Unified Co-Op, Career & Performance Suite for Microsoft Flight Simulator",
   "main": "dist/main/index.js",
   "scripts": {
