@@ -43,4 +43,11 @@ AeroSphere Studio compiles fully using TypeScript strict mode. The remaining typ
 - Ran `npm run typecheck`: Successfully passed with `0` type errors.
 - Ran `npm run build`: Successfully built all bundles (Main process with embedded assets, Preload, and Renderer React application) without errors.
 
+#### 5. Cloud Run Profiles API Deployment
+- **Deployment**: Configured and deployed the `aerosphere-profiles` service to Google Cloud Run under the `bengarab` project.
+- **Port Mapping**: Explicitly bound the container port `--port 8080` to resolve Buildpacks Dockerfile detection conflicts.
+- **URL**: `https://aerosphere-profiles-430356395102.us-central1.run.app`
+- **Firestore**: Successfully linked to the `db-aerosphere` database.
+
+
 
