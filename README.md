@@ -14,14 +14,20 @@ A unified, high-performance desktop co-op, career, and performance suite for **M
 ### 1. Main Dashboard
 ![Main Dashboard](docs/images/dashboard_preview.png)
 
-### 2. Shared Cockpit Panel
-![Shared Cockpit](docs/images/shared_cockpit.png)
+### 2. Dynamic LOD Engine
+![Dynamic LOD Engine](docs/images/lod_engine.png)
 
-### 3. Dynamic LOD Engine
-![LOD Engine](docs/images/lod_engine.png)
+### 3. Shared Cockpit Panel
+![Shared Cockpit Panel](docs/images/shared_cockpit.png)
 
-### 4. Cloud Account & Billing Web Dashboard
-![Web Dashboard](docs/images/web_billing.png)
+### 4. Career Mode Dashboard
+![Career Mode Dashboard](docs/images/career_mode.png)
+
+### 5. Aircraft Shop (Career Mode)
+![Aircraft Shop](docs/images/aircraft_shop.png)
+
+### 6. Pilot Sign-In Screen
+![Sign In Screen](docs/images/sign_in.png)
 
 ---
 
