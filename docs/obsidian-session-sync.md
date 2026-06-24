@@ -52,21 +52,13 @@ The app targets a **named Firestore database instance** (`db-aerosphere`) rather
 
 ## 🔮 What's Remaining for Production Readiness
 
-### 1. Rebuild C++ Native Addon (`memoryjs`)
-Since the user machine lacks the C++ compile tools, `memoryjs` failed to compile during `npx electron-rebuild`. 
-* Run this command in an **Administrator Command Prompt** to install compile tools:
-  ```powershell
-  winget install --id Microsoft.VisualStudio.2022.BuildTools --override "--add Microsoft.VisualStudio.Workload.VCTools --includeRecommended --passive --norestart"
-  ```
-* Once installed, restart your terminal and run the rebuild:
-  ```bash
-  npx electron-rebuild -f -w memoryjs
-  ```
+### 1. Rebuild C++ Native Addon (`memoryjs`) ✅ COMPLETE
+- **Status**: Successfully rebuilt using `electron-rebuild` with `/Zc:strictStrings-` MSVC compiler option to bypass strict string literals validation warnings. Native binary `memoryjs.node` is successfully compiled for Electron and operational!
 
 ### 2. Compile the WASM Module
-* Locate the C source gauge inside `wasm-module/`.
-* Use the MSFS SDK / LLVM toolchain to compile it into `wasm-module/PackageSources/` so it is ready to install via the app's auto-detection.
+- Locate the C source gauge inside `wasm-module/`.
+- Use the MSFS SDK / LLVM toolchain to compile it into `wasm-module/PackageSources/` so it is ready to install via the app's auto-detection.
 
 ### 3. Deploy Cloud Services
-* **Signaling Server** (`cloud-signaling/`) and **Profile API** (`cloud-profiles/`) need to be deployed to Google Cloud Run.
-* Map a secure URL for WebSockets (`wss://`) and Firestore connections.
+- **Signaling Server** (`cloud-signaling/`) and **Profile API** (`cloud-profiles/`) need to be deployed to Google Cloud Run.
+- Map a secure URL for WebSockets (`wss://`) and Firestore connections.

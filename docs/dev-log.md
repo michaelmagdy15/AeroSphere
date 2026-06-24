@@ -38,6 +38,9 @@ AeroSphere Studio compiles fully using TypeScript strict mode. The remaining typ
   - Rewrote `runMigrations()` and `seedData()` to consume these in-memory data structures, eliminating all relative filesystem reads.
 
 ### Verification
+- **Compilation Workaround**: Added the `/Zc:strictStrings-` option inside the `binding.gyp` targets for `memoryjs` to bypass MSVC compilation errors caused by strict string literal pointer conversions on Visual Studio 2022.
+- **Rebuild Native Addons**: Run `npx electron-rebuild -f -w memoryjs` completed successfully with `0` errors, creating the binary `memoryjs.node` compiled for Electron.
 - Ran `npm run typecheck`: Successfully passed with `0` type errors.
 - Ran `npm run build`: Successfully built all bundles (Main process with embedded assets, Preload, and Renderer React application) without errors.
+
 
