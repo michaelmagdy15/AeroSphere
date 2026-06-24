@@ -5,7 +5,23 @@
 [![Electron](https://img.shields.io/badge/electron-v33-47848F?style=for-the-badge&logo=electron)](https://www.electronjs.org/)
 [![React](https://img.shields.io/badge/react-v19-%2361DAFB?style=for-the-badge&logo=react)](https://react.dev/)
 
-A unified, high-performance desktop co-op, career, and performance suite for **Microsoft Flight Simulator 2024**. Crafted with a premium dark glassmorphism aesthetic.
+A unified, high-performance desktop co-op, career, and performance suite for **Microsoft Flight Simulator 2024**. Crafted with a premium dark glassmorphism aesthetic, featuring username/email/password authentication, a built-in background auto-updater, and a live web-based pilot profile & billing dashboard.
+
+---
+
+## 📸 Application Screenshots
+
+### 1. Main Dashboard
+![Main Dashboard](docs/images/dashboard_preview.png)
+
+### 2. Shared Cockpit Panel
+![Shared Cockpit](docs/images/shared_cockpit.png)
+
+### 3. Dynamic LOD Engine
+![LOD Engine](docs/images/lod_engine.png)
+
+### 4. Cloud Account & Billing Web Dashboard
+![Web Dashboard](docs/images/web_billing.png)
 
 ---
 
@@ -22,12 +38,18 @@ Multiplayer flight coordination using high-performance P2P variables sync and vo
 * **WebRTC Networking**: Direct pilot-to-copilot data channels and VoIP routing with push-to-talk and radio static effects.
 * **Auto-Learn Profile Engine**: Scans, classifies, and automatically maps aircraft control parameters.
 * **Conflict Blender**: Dual-control authority management with smooth input blending.
+* **Trial & Billing**: Fully unlocked for the first 30 days of the pilot account; requires a $5 one-time purchase to unlock permanently thereafter.
 
 ### 3. Career Mode (Pro)
 An offline-first career progression system with economic operations and flight tracking.
-* **Local Database**: Fast SQLite engine storing licenses (SPL, PPL, CPL, ATPL), fleets, bases, and ledgers.
+* **Local Database**: Fast SQLite database storing licenses (SPL, PPL, CPL, ATPL), fleets, bases, and ledgers.
 * **Mission Board**: Procedurally generated cargo, passenger, medical, charter, and VIP missions.
 * **Landing Scorer**: Tracks flight statistics, G-forces, fuel consumption, and landing rates (fpm).
+* **Trial & Billing**: Fully unlocked for the first 30 days of the pilot account; requires a $5 one-time purchase to unlock permanently thereafter.
+
+### 4. Auto-Updater & Profiles Portal
+* **Built-in Auto-Updater**: Electron main process tracks updates against GitHub Releases. Updates download silently in the background, displaying a glassmorphic toast notification with a 5-second countdown timer before applying updates on restart.
+* **Web-Based Dashboard**: Serves a sleek portal at `https://aerosphere-profiles-430356395102.us-central1.run.app` for user registration, authentication, trial tracking, and secure payment processing.
 
 ---
 
@@ -46,7 +68,8 @@ The user interface utilizes a modern dark glassmorphism system:
 * **SimConnect Layer**: `node-simconnect` (Pure TS) + C WASM Gauge Bridge
 * **Native Modules**: `memoryjs` (C++ Addon)
 * **Database**: `better-sqlite3` (SQLite)
-* **Cloud backend**: Google Cloud Run (Express API + WebSockets) + Firestore
+* **Cloud Backend**: Google Cloud Run (Express API + WebSockets) + Firestore
+* **Auth**: Firebase Authentication (Email/Password & Social OAuth)
 
 ---
 
