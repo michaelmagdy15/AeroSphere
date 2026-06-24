@@ -1,0 +1,107 @@
+/* ============================================================
+   AeroSphere Studio — Design Tokens & Glass Theme
+   OKLCH-inspired HSL palette · Dark Glassmorphism
+   ============================================================ */
+
+:root {
+  /* ── Surface Backgrounds ─────────────────────────────────── */
+  --bg-primary:   hsl(220, 30%, 5%);
+  --bg-secondary: hsl(220, 25%, 8%);
+  --bg-elevated:  hsl(220, 20%, 12%);
+  --bg-glass:     rgba(15, 23, 42, 0.6);
+  --bg-glass-hover: rgba(15, 23, 42, 0.75);
+
+  /* ── Borders ─────────────────────────────────────────────── */
+  --border-glass:       rgba(148, 163, 184, 0.1);
+  --border-glass-hover: rgba(148, 163, 184, 0.2);
+  --border-active:      rgba(96, 165, 250, 0.4);
+
+  /* ── Accent Colors ───────────────────────────────────────── */
+  --accent-blue:   hsl(210, 100%, 60%);
+  --accent-green:  hsl(160, 100%, 45%);
+  --accent-amber:  hsl(35, 100%, 55%);
+  --accent-red:    hsl(0, 85%, 60%);
+
+  --accent-blue-dim:  hsla(210, 100%, 60%, 0.15);
+  --accent-green-dim: hsla(160, 100%, 45%, 0.15);
+  --accent-amber-dim: hsla(35, 100%, 55%, 0.15);
+  --accent-red-dim:   hsla(0, 85%, 60%, 0.15);
+
+  /* ── Text ────────────────────────────────────────────────── */
+  --text-primary:   hsl(210, 20%, 90%);
+  --text-secondary: hsl(215, 15%, 60%);
+  --text-muted:     hsl(215, 10%, 40%);
+
+  /* ── Glass Effect ────────────────────────────────────────── */
+  --glass-blur: 20px;
+
+  /* ── Border Radius ───────────────────────────────────────── */
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+  --radius-xl:  20px;
+
+  /* ── Shadows & Glow ──────────────────────────────────────── */
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg:  0 8px 32px rgba(0, 0, 0, 0.6);
+
+  --shadow-glow-blue:  0 0 20px hsla(210, 100%, 60%, 0.25),
+                       0 0 60px hsla(210, 100%, 60%, 0.08);
+  --shadow-glow-green: 0 0 20px hsla(160, 100%, 45%, 0.25),
+                       0 0 60px hsla(160, 100%, 45%, 0.08);
+  --shadow-glow-amber: 0 0 20px hsla(35, 100%, 55%, 0.2),
+                       0 0 60px hsla(35, 100%, 55%, 0.06);
+
+  /* ── Spacing Scale ───────────────────────────────────────── */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* ── Typography ──────────────────────────────────────────── */
+  --font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-xs:  0.75rem;
+  --font-size-sm:  0.8125rem;
+  --font-size-md:  0.9375rem;
+  --font-size-lg:  1.125rem;
+  --font-size-xl:  1.5rem;
+  --font-size-2xl: 2rem;
+  --font-weight-light:    300;
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+}
+
+/* ── Glass Panel ─────────────────────────────────────────── */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+}
+
+.glass:hover {
+  border-color: var(--border-glass-hover);
+}
+
+/* ── Glass variants ──────────────────────────────────────── */
+.glass-solid {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+}
+
+.glass-glow-blue {
+  box-shadow: var(--shadow-glow-blue);
+  border-color: rgba(96, 165, 250, 0.2);
+}
+
+.glass-glow-green {
+  box-shadow: var(--shadow-glow-green);
+  border-color: rgba(45, 212, 160, 0.2);
+}

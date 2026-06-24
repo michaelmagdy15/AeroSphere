@@ -1,0 +1,66 @@
+/* Tabs — AeroSphere Studio */
+
+.tabs {
+  position: relative;
+}
+
+.tabs-track {
+  position: relative;
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+}
+
+.tabs-item {
+  position: relative;
+  padding: 8px 20px;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.tabs-item:hover:not(.tabs-item--active) {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.tabs-item--active {
+  color: var(--text-primary);
+}
+
+/* ── Sliding indicator ─────────────────────── */
+
+.tabs-indicator {
+  position: absolute;
+  bottom: 3px;
+  height: calc(100% - 6px);
+  background: rgba(96, 165, 250, 0.1);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  border-radius: var(--radius-md);
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.tabs-indicator::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: var(--accent-blue);
+  border-radius: 2px;
+  box-shadow: 0 0 8px hsla(210, 100%, 60%, 0.4);
+}

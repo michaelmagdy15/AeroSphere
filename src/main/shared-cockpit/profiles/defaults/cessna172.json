@@ -1,0 +1,170 @@
+{
+  "aircraftTitle": "Cessna Skyhawk G2 172SP",
+  "version": 1,
+  "createdAt": "2026-06-24T00:00:00Z",
+  "verified": true,
+  "mappings": [
+    {
+      "varName": "GENERAL_ENG_THROTTLE_LEVER_POSITION:1",
+      "varType": "simvar",
+      "canonicalControl": "THROTTLE",
+      "syncMode": "continuous",
+      "interpolate": true,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "GENERAL_ENG_MIXTURE_LEVER_POSITION:1",
+      "varType": "simvar",
+      "canonicalControl": "MIXTURE",
+      "syncMode": "continuous",
+      "interpolate": true,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "GENERAL_ENG_PROPELLER_LEVER_POSITION:1",
+      "varType": "simvar",
+      "canonicalControl": "PROP_RPM",
+      "syncMode": "continuous",
+      "interpolate": true,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "FLAPS_HANDLE_PERCENT",
+      "varType": "simvar",
+      "canonicalControl": "FLAPS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "BRAKE_PARKING_INDICATOR",
+      "varType": "simvar",
+      "canonicalControl": "PARKING_BRAKE",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "ELEVATOR_TRIM_POSITION",
+      "varType": "simvar",
+      "canonicalControl": "TRIM_ELEVATOR",
+      "syncMode": "continuous",
+      "interpolate": true,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "LIGHT_LANDING",
+      "varType": "simvar",
+      "canonicalControl": "LANDING_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "LIGHT_TAXI",
+      "varType": "simvar",
+      "canonicalControl": "TAXI_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "LIGHT_NAV",
+      "varType": "simvar",
+      "canonicalControl": "NAV_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "LIGHT_BEACON",
+      "varType": "simvar",
+      "canonicalControl": "BEACON_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "LIGHT_STROBE",
+      "varType": "simvar",
+      "canonicalControl": "STROBE_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "COM_ACTIVE_FREQUENCY:1",
+      "varType": "simvar",
+      "canonicalControl": "COM1_FREQ",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "COM_ACTIVE_FREQUENCY:2",
+      "varType": "simvar",
+      "canonicalControl": "COM2_FREQ",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "NAV_ACTIVE_FREQUENCY:1",
+      "varType": "simvar",
+      "canonicalControl": "NAV1_FREQ",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "NAV_ACTIVE_FREQUENCY:2",
+      "varType": "simvar",
+      "canonicalControl": "NAV2_FREQ",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "TRANSPONDER_CODE:1",
+      "varType": "simvar",
+      "canonicalControl": "TRANSPONDER_CODE",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "KOHLSMAN_SETTING_STD:1",
+      "varType": "simvar",
+      "canonicalControl": "BAROMETER_SETTING",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "AUTOPILOT_MASTER",
+      "varType": "simvar",
+      "canonicalControl": "AUTOPILOT_MASTER",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    }
+  ]
+}

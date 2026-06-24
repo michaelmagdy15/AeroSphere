@@ -1,0 +1,289 @@
+/* ============================================================
+   CareerDashboard — Career Mode overview panel
+   ============================================================ */
+
+.career-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ---- Welcome Banner ---- */
+.career-dashboard__welcome {
+  position: relative;
+  background: linear-gradient(135deg, hsla(220, 60%, 15%, 0.8), hsla(270, 40%, 15%, 0.8));
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl) var(--space-xl);
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  overflow: hidden;
+}
+
+.career-dashboard__welcome::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-xl);
+  padding: 1px;
+  background: linear-gradient(135deg, hsla(210, 100%, 60%, 0.3), hsla(270, 80%, 65%, 0.15), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.career-dashboard__welcome-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-sm) 0;
+}
+
+.career-dashboard__license-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
+  background: var(--accent-blue-dim);
+  color: var(--accent-blue);
+  border-radius: 999px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border: 1px solid hsla(210, 100%, 60%, 0.25);
+}
+
+/* ---- Stats Row ---- */
+.career-dashboard__stats {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.career-dashboard__stat-card {
+  flex: 1;
+  position: relative;
+  background: var(--bg-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  transition: all 0.25s ease;
+}
+
+.career-dashboard__stat-card:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--border-glass-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.career-dashboard__stat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  padding: 1px;
+  background: linear-gradient(180deg, var(--border-glass-hover), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.career-dashboard__stat-icon {
+  width: 28px;
+  height: 28px;
+  opacity: 0.9;
+}
+
+.career-dashboard__stat-value {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+}
+
+.career-dashboard__stat-value--green { color: var(--accent-green); }
+.career-dashboard__stat-value--blue { color: var(--accent-blue); }
+.career-dashboard__stat-value--amber { color: var(--accent-amber); }
+
+.career-dashboard__stat-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Reputation progress */
+.career-dashboard__reputation-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-elevated);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.career-dashboard__reputation-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-amber), hsl(45, 100%, 55%));
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+
+.career-dashboard__reputation-text {
+  font-size: var(--font-size-xs);
+  color: var(--accent-amber);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ---- Quick Actions ---- */
+.career-dashboard__actions {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.career-dashboard__actions > * {
+  flex: 1;
+}
+
+/* ---- Recent Flights ---- */
+.career-dashboard__recent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.career-dashboard__recent-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.career-dashboard__flight-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease;
+}
+
+.career-dashboard__flight-row:hover {
+  background: var(--bg-glass-hover);
+}
+
+.career-dashboard__flight-row + .career-dashboard__flight-row {
+  border-top: 1px solid var(--border-glass);
+}
+
+.career-dashboard__flight-route {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  min-width: 140px;
+}
+
+.career-dashboard__flight-rate {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  min-width: 80px;
+  text-align: center;
+}
+
+.career-dashboard__flight-rate--green { color: var(--accent-green); }
+.career-dashboard__flight-rate--amber { color: var(--accent-amber); }
+.career-dashboard__flight-rate--red { color: var(--accent-red); }
+
+.career-dashboard__flight-payout {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--accent-green);
+  min-width: 80px;
+  text-align: right;
+}
+
+/* ---- Revenue Chart ---- */
+.career-dashboard__chart-header {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-md) 0;
+}
+
+.career-dashboard__chart-svg {
+  width: 100%;
+  height: 160px;
+}
+
+/* ---- License Progression ---- */
+.career-dashboard__license-row {
+  display: flex;
+  gap: 2px;
+  margin-top: var(--space-md);
+}
+
+.career-dashboard__license-segment {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.career-dashboard__license-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+}
+
+.career-dashboard__license-bar {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  transition: all 0.4s ease;
+}
+
+.career-dashboard__license-bar--completed {
+  background: var(--accent-green);
+}
+
+.career-dashboard__license-bar--current {
+  background: var(--accent-blue);
+  box-shadow: var(--shadow-glow-blue);
+}
+
+.career-dashboard__license-bar--future {
+  background: var(--bg-elevated);
+}
+
+/* ---- Bottom Grid ---- */
+.career-dashboard__bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+/* ---- Stagger Entrance ---- */
+.career-dashboard > *:nth-child(1) { animation-delay: 0ms; }
+.career-dashboard > *:nth-child(2) { animation-delay: 60ms; }
+.career-dashboard > *:nth-child(3) { animation-delay: 120ms; }
+.career-dashboard > *:nth-child(4) { animation-delay: 180ms; }
+.career-dashboard > *:nth-child(5) { animation-delay: 240ms; }
+.career-dashboard > *:nth-child(6) { animation-delay: 300ms; }
+
+@keyframes careerFadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.career-dashboard > * {
+  animation: careerFadeInUp 0.5s ease both;
+}

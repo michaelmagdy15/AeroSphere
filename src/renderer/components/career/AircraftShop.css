@@ -1,0 +1,185 @@
+/* ============================================================
+   AircraftShop — Purchase/lease aircraft
+   ============================================================ */
+
+.aircraft-shop {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ---- Header ---- */
+.aircraft-shop__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: asFadeIn 0.4s ease both;
+}
+
+.aircraft-shop__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.aircraft-shop__balance {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
+  background: var(--accent-green-dim);
+  color: var(--accent-green);
+  border-radius: 999px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border: 1px solid hsla(160, 100%, 45%, 0.2);
+}
+
+/* ---- Tabs ---- */
+.aircraft-shop__tabs {
+  display: flex;
+  gap: var(--space-xs);
+  padding: var(--space-xs);
+  background: var(--bg-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  animation: asFadeIn 0.4s ease 0.05s both;
+}
+
+.aircraft-shop__tab {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+}
+
+.aircraft-shop__tab:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.aircraft-shop__tab--active {
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---- Grid ---- */
+.aircraft-shop__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+/* ---- Card ---- */
+.aircraft-shop__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  text-align: center;
+  transition: all 0.25s ease;
+  animation: asCardIn 0.45s ease both;
+}
+
+.aircraft-shop__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.aircraft-shop__card:nth-child(1) { animation-delay: 0ms; }
+.aircraft-shop__card:nth-child(2) { animation-delay: 50ms; }
+.aircraft-shop__card:nth-child(3) { animation-delay: 100ms; }
+.aircraft-shop__card:nth-child(4) { animation-delay: 150ms; }
+.aircraft-shop__card:nth-child(5) { animation-delay: 200ms; }
+.aircraft-shop__card:nth-child(6) { animation-delay: 250ms; }
+.aircraft-shop__card:nth-child(7) { animation-delay: 300ms; }
+.aircraft-shop__card:nth-child(8) { animation-delay: 350ms; }
+
+.aircraft-shop__card-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-bottom: var(--space-xs);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.aircraft-shop__card-name {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.aircraft-shop__card-category {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Specs Grid */
+.aircraft-shop__specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xs) var(--space-md);
+  width: 100%;
+  padding: var(--space-sm) 0;
+  border-top: 1px solid var(--border-glass);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.aircraft-shop__spec-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.aircraft-shop__spec-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.aircraft-shop__spec-value {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+/* Price */
+.aircraft-shop__price {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--accent-green);
+}
+
+/* Buy Button */
+.aircraft-shop__buy-btn {
+  width: 100%;
+}
+
+/* ---- Animations ---- */
+@keyframes asFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes asCardIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}

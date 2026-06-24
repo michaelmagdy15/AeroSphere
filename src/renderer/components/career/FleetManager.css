@@ -1,0 +1,235 @@
+/* ============================================================
+   FleetManager — Owned aircraft cards
+   ============================================================ */
+
+.fleet-manager {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ---- Header ---- */
+.fleet-manager__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  animation: fmFadeIn 0.4s ease both;
+}
+
+.fleet-manager__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.fleet-manager__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 var(--space-sm);
+  background: var(--accent-blue-dim);
+  color: var(--accent-blue);
+  border-radius: 999px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border: 1px solid hsla(210, 100%, 60%, 0.2);
+}
+
+/* ---- Grid ---- */
+.fleet-manager__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-md);
+}
+
+/* ---- Card ---- */
+.fleet-manager__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  transition: all 0.25s ease;
+  animation: fmCardIn 0.45s ease both;
+}
+
+.fleet-manager__card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.fleet-manager__card:nth-child(1) { animation-delay: 0ms; }
+.fleet-manager__card:nth-child(2) { animation-delay: 70ms; }
+.fleet-manager__card:nth-child(3) { animation-delay: 140ms; }
+.fleet-manager__card:nth-child(4) { animation-delay: 210ms; }
+.fleet-manager__card:nth-child(5) { animation-delay: 280ms; }
+.fleet-manager__card:nth-child(6) { animation-delay: 350ms; }
+
+/* Card Header */
+.fleet-manager__card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.fleet-manager__registration {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+}
+
+/* Location */
+.fleet-manager__location {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.fleet-manager__location svg {
+  opacity: 0.6;
+}
+
+/* Condition Bar */
+.fleet-manager__condition-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.fleet-manager__condition-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-elevated);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.fleet-manager__condition-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s ease, background 0.3s ease;
+}
+
+.fleet-manager__condition-fill--green {
+  background: linear-gradient(90deg, var(--accent-green), hsl(140, 80%, 50%));
+}
+
+.fleet-manager__condition-fill--amber {
+  background: linear-gradient(90deg, var(--accent-amber), hsl(45, 100%, 55%));
+}
+
+.fleet-manager__condition-fill--red {
+  background: linear-gradient(90deg, var(--accent-red), hsl(15, 85%, 55%));
+}
+
+/* Stats Grid */
+.fleet-manager__stats-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.fleet-manager__stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fleet-manager__stat-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fleet-manager__stat-value {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+/* Status Badge */
+.fleet-manager__status-badge {
+  display: inline-block;
+  padding: 2px var(--space-sm);
+  border-radius: 999px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  white-space: nowrap;
+}
+
+.fleet-manager__status-badge--available {
+  background: var(--accent-green-dim);
+  color: var(--accent-green);
+  border: 1px solid hsla(160, 100%, 45%, 0.2);
+}
+
+.fleet-manager__status-badge--in_flight {
+  background: var(--accent-blue-dim);
+  color: var(--accent-blue);
+  border: 1px solid hsla(210, 100%, 60%, 0.2);
+}
+
+.fleet-manager__status-badge--maintenance {
+  background: var(--accent-amber-dim);
+  color: var(--accent-amber);
+  border: 1px solid hsla(35, 100%, 55%, 0.2);
+}
+
+.fleet-manager__status-badge--grounded {
+  background: var(--accent-red-dim);
+  color: var(--accent-red);
+  border: 1px solid hsla(0, 85%, 60%, 0.2);
+}
+
+/* ---- Empty State ---- */
+.fleet-manager__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xl);
+  gap: var(--space-md);
+  color: var(--text-muted);
+  animation: fmFadeIn 0.5s ease both;
+}
+
+.fleet-manager__empty-icon {
+  width: 56px;
+  height: 56px;
+  opacity: 0.4;
+}
+
+.fleet-manager__empty-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.fleet-manager__empty-sub {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ---- Animations ---- */
+@keyframes fmFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fmCardIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}

@@ -1,0 +1,512 @@
+{
+  "aircraftTitle": "Airbus A320neo (Fenix)",
+  "version": 1,
+  "createdAt": "2026-06-24T00:00:00Z",
+  "verified": true,
+  "mappings": [
+    {
+      "varName": "A32NX_AUTOPILOT_1_ACTIVE",
+      "varType": "lvar",
+      "canonicalControl": "AUTOPILOT_MASTER",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_AUTOTHRUST_STATUS",
+      "varType": "lvar",
+      "canonicalControl": "AUTOTHROTTLE",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_FCU_HDG_MANAGED_DOT",
+      "varType": "lvar",
+      "canonicalControl": "HEADING_BUG",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "A32NX_FCU_ALT_MANAGED",
+      "varType": "lvar",
+      "canonicalControl": "ALTITUDE_BUG",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "A32NX_FCU_SPD_MANAGED_DOT",
+      "varType": "lvar",
+      "canonicalControl": "SPEED_BUG",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "A32NX_FCU_VS_MANAGED",
+      "varType": "lvar",
+      "canonicalControl": "VS_BUG",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "A32NX_FCU_LOC_MODE_ACTIVE",
+      "varType": "lvar",
+      "canonicalControl": "NAV_MODE",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_FCU_APPR_MODE_ACTIVE",
+      "varType": "lvar",
+      "canonicalControl": "APPROACH_MODE",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_FCU_FD_1_ACTIVE",
+      "varType": "lvar",
+      "canonicalControl": "FD_SWITCH",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_ENG_MASTER_1",
+      "varType": "lvar",
+      "canonicalControl": "ENGINE_MASTER_1",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_ENG_MASTER_2",
+      "varType": "lvar",
+      "canonicalControl": "ENGINE_MASTER_2",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_ENG_MODE_SELECTOR_1",
+      "varType": "lvar",
+      "canonicalControl": "ENGINE_STARTER_1",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_ENG_MODE_SELECTOR_2",
+      "varType": "lvar",
+      "canonicalControl": "ENGINE_STARTER_2",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_THROTTLE_POSITION_1",
+      "varType": "lvar",
+      "canonicalControl": "THROTTLE",
+      "syncMode": "continuous",
+      "interpolate": true,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "A32NX_ENG_IGNITION",
+      "varType": "lvar",
+      "canonicalControl": "IGNITION",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_APU_MASTER_SW",
+      "varType": "lvar",
+      "canonicalControl": "APU_MASTER",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_APU_BLEED_SW",
+      "varType": "lvar",
+      "canonicalControl": "APU_BLEED",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_LANDING_LIGHT_L",
+      "varType": "lvar",
+      "canonicalControl": "LANDING_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_TAXI_LIGHT",
+      "varType": "lvar",
+      "canonicalControl": "TAXI_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_NAV_LIGHT",
+      "varType": "lvar",
+      "canonicalControl": "NAV_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_BEACON_LIGHT",
+      "varType": "lvar",
+      "canonicalControl": "BEACON_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_STROBE_LIGHT",
+      "varType": "lvar",
+      "canonicalControl": "STROBE_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_WING_LIGHT",
+      "varType": "lvar",
+      "canonicalControl": "WING_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_LOGO_LIGHT",
+      "varType": "lvar",
+      "canonicalControl": "LOGO_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_RWY_TURNOFF_LIGHT",
+      "varType": "lvar",
+      "canonicalControl": "RUNWAY_TURNOFF_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_DOME_LIGHT",
+      "varType": "lvar",
+      "canonicalControl": "DOME_LIGHT",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_PANEL_LIGHT_OVHD",
+      "varType": "lvar",
+      "canonicalControl": "PANEL_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_FLAPS_HANDLE_PERCENT",
+      "varType": "lvar",
+      "canonicalControl": "FLAPS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_SPOILER_HANDLE",
+      "varType": "lvar",
+      "canonicalControl": "SPOILERS",
+      "syncMode": "continuous",
+      "interpolate": true,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "A32NX_GEAR_HANDLE_POSITION",
+      "varType": "lvar",
+      "canonicalControl": "GEAR_HANDLE",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_PARKING_BRAKE",
+      "varType": "lvar",
+      "canonicalControl": "PARKING_BRAKE",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_AUTOBRAKE_KNOB",
+      "varType": "lvar",
+      "canonicalControl": "AUTOBRAKE",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_PITCH_TRIM",
+      "varType": "lvar",
+      "canonicalControl": "TRIM_ELEVATOR",
+      "syncMode": "continuous",
+      "interpolate": true,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "A32NX_PACK_1_SW",
+      "varType": "lvar",
+      "canonicalControl": "PACK_1",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_PACK_2_SW",
+      "varType": "lvar",
+      "canonicalControl": "PACK_2",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_BLEED_ENG_1",
+      "varType": "lvar",
+      "canonicalControl": "BLEED_1",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_BLEED_ENG_2",
+      "varType": "lvar",
+      "canonicalControl": "BLEED_2",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_HYD_GREEN_PUMP",
+      "varType": "lvar",
+      "canonicalControl": "HYD_PUMP_1",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_HYD_BLUE_EPUMP",
+      "varType": "lvar",
+      "canonicalControl": "HYD_PUMP_2",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_HYD_YELLOW_PUMP",
+      "varType": "lvar",
+      "canonicalControl": "HYD_PUMP_3",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_ELEC_GEN_1",
+      "varType": "lvar",
+      "canonicalControl": "ELEC_GEN_1",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_ELEC_GEN_2",
+      "varType": "lvar",
+      "canonicalControl": "ELEC_GEN_2",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_ELEC_BAT_1",
+      "varType": "lvar",
+      "canonicalControl": "BATTERY_MASTER",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_SEATBELT_SIGN",
+      "varType": "lvar",
+      "canonicalControl": "SEATBELT_SIGN",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_NO_SMOKING_SIGN",
+      "varType": "lvar",
+      "canonicalControl": "NO_SMOKING_SIGN",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_MASTER_CAUTION",
+      "varType": "lvar",
+      "canonicalControl": "MASTER_CAUTION",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_MASTER_WARNING",
+      "varType": "lvar",
+      "canonicalControl": "MASTER_WARNING",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_COM_1_FREQ",
+      "varType": "lvar",
+      "canonicalControl": "COM1_FREQ",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "A32NX_NAV_1_FREQ",
+      "varType": "lvar",
+      "canonicalControl": "NAV1_FREQ",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "A32NX_XPNDR_CODE",
+      "varType": "lvar",
+      "canonicalControl": "TRANSPONDER_CODE",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_BARO_1_QNH",
+      "varType": "lvar",
+      "canonicalControl": "BAROMETER_SETTING",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "A32NX_MCDU_1_INPUT",
+      "varType": "lvar",
+      "canonicalControl": "FMS_1",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "A32NX_ECAM_SD_CURRENT_PAGE",
+      "varType": "lvar",
+      "canonicalControl": "ECAM_PAGE",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_DOOR_PAX_1",
+      "varType": "lvar",
+      "canonicalControl": "DOOR_MAIN",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_DOOR_CARGO_FWD",
+      "varType": "lvar",
+      "canonicalControl": "DOOR_CARGO",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "A32NX_WIPER_L_SPEED",
+      "varType": "lvar",
+      "canonicalControl": "WIPER",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    }
+  ]
+}

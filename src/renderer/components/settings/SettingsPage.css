@@ -1,0 +1,267 @@
+/* ============================================================
+   SettingsPage — AeroSphere Studio
+   Premium glassmorphism settings UI
+   ============================================================ */
+
+/* ── Page layout ──────────────────────────────── */
+
+.settings-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding-bottom: var(--space-2xl);
+  max-width: 720px;
+}
+
+.settings-header {
+  margin-bottom: var(--space-sm);
+}
+
+.settings-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.settings-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* ── Section (tab content wrapper) ────────────── */
+
+.settings-body {
+  margin-top: var(--space-md);
+}
+
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ── Card ─────────────────────────────────────── */
+
+.settings-card {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.settings-card--danger {
+  border-color: hsla(0, 85%, 60%, 0.2);
+}
+
+.settings-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.settings-card__icon {
+  font-size: 1.1rem;
+}
+
+.settings-card__title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+/* ── Row (label + control) ────────────────────── */
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.settings-row__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.settings-row__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+.settings-row__hint {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+/* ── Utility elements ─────────────────────────── */
+
+.settings-badge {
+  padding: 4px 14px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--accent-blue);
+  background: var(--accent-blue-dim);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.settings-balance {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--accent-green);
+  font-variant-numeric: tabular-nums;
+}
+
+.settings-hint {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ── Slider pair (min/max side by side) ───────── */
+
+.settings-slider-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+@media (max-width: 560px) {
+  .settings-slider-pair {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Role select buttons ──────────────────────── */
+
+.settings-role-select {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.settings-role-btn {
+  flex: 1;
+  padding: 10px 16px;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.settings-role-btn:hover:not(.settings-role-btn--active) {
+  color: var(--text-primary);
+  border-color: var(--border-glass-hover);
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.settings-role-btn--active {
+  color: var(--accent-blue);
+  background: var(--accent-blue-dim);
+  border-color: rgba(96, 165, 250, 0.3);
+  box-shadow: 0 0 12px hsla(210, 100%, 60%, 0.15);
+}
+
+/* ── About section ────────────────────────────── */
+
+.settings-about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-xl) 0;
+  gap: var(--space-sm);
+}
+
+.settings-about__logo {
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-bottom: var(--space-sm);
+  animation: breathe 4s ease-in-out infinite;
+}
+
+.settings-about__name {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.settings-about__version {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--accent-blue);
+  background: var(--accent-blue-dim);
+  padding: 3px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+}
+
+.settings-about__tagline {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-top: var(--space-xs);
+}
+
+.settings-about__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.settings-about__link {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--accent-blue);
+  transition: opacity 0.2s ease;
+}
+
+.settings-about__link:hover {
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+.settings-about__dot {
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+}
+
+.settings-about__credits {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  margin-top: var(--space-lg);
+}
+
+/* ── Modal helpers ────────────────────────────── */
+
+.modal-text {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+}
+
+.modal-text strong {
+  color: var(--accent-red);
+  font-weight: var(--font-weight-semibold);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+}

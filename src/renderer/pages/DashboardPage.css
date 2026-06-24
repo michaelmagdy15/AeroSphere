@@ -1,0 +1,257 @@
+/* ============================================================
+   DashboardPage — Landing / Overview
+   Premium glassmorphism hero with glowing feature cards
+   ============================================================ */
+
+.dash {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  min-height: 100%;
+}
+
+/* ── Hero Section ─────────────────────────────────────────── */
+.dash-hero {
+  position: relative;
+  padding: var(--space-2xl) var(--space-xl);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background:
+    linear-gradient(135deg,
+      hsla(220, 50%, 8%, 0.9),
+      hsla(220, 40%, 12%, 0.85) 40%,
+      hsla(210, 60%, 14%, 0.8));
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+/* Animated gradient orbs behind the hero */
+.dash-hero::before,
+.dash-hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  pointer-events: none;
+  animation: heroOrb 8s ease-in-out infinite alternate;
+}
+
+.dash-hero::before {
+  width: 320px;
+  height: 320px;
+  top: -60px;
+  left: -40px;
+  background: hsla(210, 100%, 60%, 0.12);
+}
+
+.dash-hero::after {
+  width: 260px;
+  height: 260px;
+  bottom: -50px;
+  right: -20px;
+  background: hsla(160, 100%, 45%, 0.1);
+  animation-delay: 4s;
+}
+
+@keyframes heroOrb {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(15px, -10px) scale(1.08); }
+  100% { transform: translate(-10px, 8px) scale(0.95); }
+}
+
+.dash-hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+.dash-hero__greeting {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--space-sm);
+}
+
+.dash-hero__name {
+  font-size: 2.25rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: var(--space-sm);
+}
+
+.dash-hero__name span {
+  background: linear-gradient(135deg, var(--accent-blue), hsl(190, 100%, 55%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dash-hero__sub {
+  font-size: var(--font-size-md);
+  color: var(--text-secondary);
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+/* ── Feature Cards Row ────────────────────────────────────── */
+.dash-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.dash-card {
+  position: relative;
+  padding: var(--space-xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  background: var(--bg-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.25s ease,
+              box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.dash-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-glass-hover);
+}
+
+.dash-card--blue:hover  { box-shadow: var(--shadow-glow-blue); }
+.dash-card--green:hover { box-shadow: var(--shadow-glow-green); }
+.dash-card--amber:hover { box-shadow: var(--shadow-glow-amber); }
+
+/* Icon ring */
+.dash-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dash-card__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.dash-card--blue  .dash-card__icon {
+  background: var(--accent-blue-dim);
+  color: var(--accent-blue);
+}
+.dash-card--green .dash-card__icon {
+  background: var(--accent-green-dim);
+  color: var(--accent-green);
+}
+.dash-card--amber .dash-card__icon {
+  background: var(--accent-amber-dim);
+  color: var(--accent-amber);
+}
+
+.dash-card__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.dash-card__status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.dash-card__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dash-card__dot--green { background: var(--accent-green); box-shadow: 0 0 6px var(--accent-green); }
+.dash-card__dot--blue  { background: var(--accent-blue); box-shadow: 0 0 6px var(--accent-blue); }
+.dash-card__dot--amber { background: var(--accent-amber); box-shadow: 0 0 6px var(--accent-amber); }
+.dash-card__dot--muted { background: var(--text-muted); }
+
+.dash-card__btn {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-glass);
+  transition: all 0.2s ease;
+}
+
+.dash-card__btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--border-glass-hover);
+}
+
+/* ── Quick Stats ──────────────────────────────────────────── */
+.dash-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.dash-stat {
+  padding: var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  background: var(--bg-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+}
+
+.dash-stat__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.dash-stat__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.dash-stat__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dash-stat__value {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  font-feature-settings: 'tnum' 1;
+  color: var(--text-primary);
+}
+
+.dash-stat__label {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}

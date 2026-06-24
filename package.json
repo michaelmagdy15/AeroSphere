@@ -1,0 +1,35 @@
+{
+  "name": "aerosphere-studio",
+  "version": "0.1.0",
+  "description": "Unified Co-Op, Career & Performance Suite for Microsoft Flight Simulator",
+  "main": "dist/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.0.0",
+    "firebase": "^11.0.0",
+    "memoryjs": "^3.5.0",
+    "node-simconnect": "^4.2.0",
+    "simple-peer": "^9.11.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/simple-peer": "^9.11.8",
+    "@vitejs/plugin-react": "^4.4.0",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0",
+    "electron-rebuild": "^3.2.9",
+    "electron-vite": "^3.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0"
+  }
+}

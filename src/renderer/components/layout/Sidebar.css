@@ -1,0 +1,243 @@
+/* ============================================================
+   Sidebar — Fixed navigation rail
+   72px collapsed → 240px expanded on hover
+   ============================================================ */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 72px;
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-right: 1px solid var(--border-glass);
+
+  transition: width 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.sidebar:hover {
+  width: 240px;
+  border-color: var(--border-glass-hover);
+}
+
+/* ── Logo area ───────────────────────────────────────────── */
+.sidebar__logo {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 12px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.sidebar__logo-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--accent-blue), hsla(210, 100%, 70%, 1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 16px hsla(210, 100%, 60%, 0.3);
+}
+
+.sidebar__logo-icon svg {
+  width: 18px;
+  height: 18px;
+  color: white;
+}
+
+.sidebar__logo-text {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease 0.08s;
+  letter-spacing: 0.02em;
+}
+
+.sidebar:hover .sidebar__logo-text {
+  opacity: 1;
+}
+
+/* ── Navigation ──────────────────────────────────────────── */
+.sidebar__nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-sm) var(--space-sm);
+  gap: 2px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebar__nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  transition: color 0.2s ease,
+              background-color 0.2s ease;
+}
+
+.sidebar__nav-item:hover {
+  color: var(--text-primary);
+  background: rgba(148, 163, 184, 0.06);
+}
+
+.sidebar__nav-item:active {
+  transform: scale(0.97);
+}
+
+/* Active state */
+.sidebar__nav-item--active {
+  color: var(--accent-blue);
+  background: var(--accent-blue-dim);
+}
+
+.sidebar__nav-item--active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--accent-blue);
+  box-shadow: 0 0 8px hsla(210, 100%, 60%, 0.5);
+}
+
+.sidebar__nav-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar__nav-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.sidebar__nav-label {
+  opacity: 0;
+  transition: opacity 0.2s ease 0.08s;
+}
+
+.sidebar:hover .sidebar__nav-label {
+  opacity: 1;
+}
+
+/* ── PRO badge (Discord Nitro style) ─────────────────────── */
+.sidebar__pro-badge {
+  font-size: 9px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.1em;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, hsla(270, 80%, 60%, 0.9), hsla(210, 100%, 60%, 0.9));
+  color: white;
+  line-height: 1.4;
+  opacity: 0;
+  transition: opacity 0.2s ease 0.08s;
+  flex-shrink: 0;
+  margin-left: auto;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar:hover .sidebar__pro-badge {
+  opacity: 1;
+}
+
+/* ── Section divider ─────────────────────────────────────── */
+.sidebar__divider {
+  height: 1px;
+  background: var(--border-glass);
+  margin: var(--space-sm) var(--space-md);
+  flex-shrink: 0;
+}
+
+/* ── Footer / version badge ──────────────────────────────── */
+.sidebar__footer {
+  padding: var(--space-md) var(--space-md);
+  border-top: 1px solid var(--border-glass);
+  flex-shrink: 0;
+}
+
+.sidebar__version {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.sidebar__version-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, hsl(160, 100%, 55%), hsl(160, 100%, 40%));
+  flex-shrink: 0;
+  animation: statusPulse 3s ease-in-out infinite;
+  color: hsla(160, 100%, 45%, 0.3);
+}
+
+.sidebar__version-label {
+  opacity: 0;
+  transition: opacity 0.2s ease 0.08s;
+}
+
+.sidebar:hover .sidebar__version-label {
+  opacity: 1;
+}
+
+/* ── Tooltip (collapsed hover) ───────────────────────────── */
+.sidebar__nav-item[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-glass);
+  color: var(--text-primary);
+  font-size: var(--font-size-xs);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 200;
+}
+
+/* Only show tooltips when sidebar is collapsed */
+.sidebar:not(:hover) .sidebar__nav-item:hover[data-tooltip]::after {
+  opacity: 1;
+}

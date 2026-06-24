@@ -1,0 +1,63 @@
+/* ============================================================
+   GlassPanel — Reusable glass container
+   ============================================================ */
+
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: repeating-conic-gradient(
+    hsla(0, 0%, 100%, 0.01) 0% 25%,
+    transparent 0% 50%
+  ) 0 0 / 4px 4px;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.glass-panel:hover {
+  border-color: var(--border-glass-hover);
+}
+
+/* ── Glow variant ────────────────────────────────────────── */
+.glass-panel--glow {
+  animation: glowPanel 4s ease-in-out infinite;
+}
+
+.glass-panel--glow::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    hsla(210, 100%, 60%, 0.1),
+    transparent 40%,
+    transparent 60%,
+    hsla(160, 100%, 45%, 0.08)
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes glowPanel {
+  0%, 100% {
+    box-shadow: 0 0 12px hsla(210, 100%, 60%, 0.08),
+                inset 0 0 12px hsla(210, 100%, 60%, 0.02);
+  }
+  50% {
+    box-shadow: 0 0 24px hsla(210, 100%, 60%, 0.15),
+                inset 0 0 20px hsla(210, 100%, 60%, 0.04);
+  }
+}

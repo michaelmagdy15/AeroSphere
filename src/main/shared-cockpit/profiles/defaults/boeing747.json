@@ -1,0 +1,467 @@
+{
+  "aircraftTitle": "Boeing 747-8 Intercontinental",
+  "version": 1,
+  "createdAt": "2026-06-24T00:00:00Z",
+  "verified": true,
+  "mappings": [
+    {
+      "varName": "B747_AP_CMD_1",
+      "varType": "lvar",
+      "canonicalControl": "AUTOPILOT_MASTER",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_AT_ARM",
+      "varType": "lvar",
+      "canonicalControl": "AUTOTHROTTLE",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_MCP_HDG",
+      "varType": "lvar",
+      "canonicalControl": "HEADING_BUG",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "B747_MCP_ALT",
+      "varType": "lvar",
+      "canonicalControl": "ALTITUDE_BUG",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "B747_MCP_IAS_MACH",
+      "varType": "lvar",
+      "canonicalControl": "SPEED_BUG",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "B747_MCP_VS",
+      "varType": "lvar",
+      "canonicalControl": "VS_BUG",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "B747_MCP_LNAV",
+      "varType": "lvar",
+      "canonicalControl": "NAV_MODE",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_MCP_APP",
+      "varType": "lvar",
+      "canonicalControl": "APPROACH_MODE",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_FD_1_SW",
+      "varType": "lvar",
+      "canonicalControl": "FD_SWITCH",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_ENG_START_1",
+      "varType": "lvar",
+      "canonicalControl": "ENGINE_STARTER_1",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_ENG_START_2",
+      "varType": "lvar",
+      "canonicalControl": "ENGINE_STARTER_2",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_ENG_START_3",
+      "varType": "lvar",
+      "canonicalControl": "ENGINE_STARTER_3",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_ENG_START_4",
+      "varType": "lvar",
+      "canonicalControl": "ENGINE_STARTER_4",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_THROTTLE_1",
+      "varType": "lvar",
+      "canonicalControl": "THROTTLE",
+      "syncMode": "continuous",
+      "interpolate": true,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "B747_FUEL_PUMP_FWD_1",
+      "varType": "lvar",
+      "canonicalControl": "FUEL_PUMP_1",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_FUEL_PUMP_FWD_2",
+      "varType": "lvar",
+      "canonicalControl": "FUEL_PUMP_2",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_FUEL_XFEED_1",
+      "varType": "lvar",
+      "canonicalControl": "FUEL_CROSSFEED",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_IGNITION_SELECT",
+      "varType": "lvar",
+      "canonicalControl": "IGNITION",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_LANDING_LIGHT_L_OUT",
+      "varType": "lvar",
+      "canonicalControl": "LANDING_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_TAXI_LIGHT",
+      "varType": "lvar",
+      "canonicalControl": "TAXI_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_NAV_LIGHT",
+      "varType": "lvar",
+      "canonicalControl": "NAV_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_BEACON_LIGHT",
+      "varType": "lvar",
+      "canonicalControl": "BEACON_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_STROBE_LIGHT",
+      "varType": "lvar",
+      "canonicalControl": "STROBE_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_WING_LIGHT",
+      "varType": "lvar",
+      "canonicalControl": "WING_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_LOGO_LIGHT",
+      "varType": "lvar",
+      "canonicalControl": "LOGO_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_RWY_TURNOFF_L",
+      "varType": "lvar",
+      "canonicalControl": "RUNWAY_TURNOFF_LIGHTS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_FLAP_HANDLE",
+      "varType": "lvar",
+      "canonicalControl": "FLAPS",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_SPOILER_HANDLE",
+      "varType": "lvar",
+      "canonicalControl": "SPOILERS",
+      "syncMode": "continuous",
+      "interpolate": true,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "B747_GEAR_HANDLE",
+      "varType": "lvar",
+      "canonicalControl": "GEAR_HANDLE",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_PARKING_BRAKE",
+      "varType": "lvar",
+      "canonicalControl": "PARKING_BRAKE",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_AUTOBRAKE_POS",
+      "varType": "lvar",
+      "canonicalControl": "AUTOBRAKE",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_STAB_TRIM",
+      "varType": "lvar",
+      "canonicalControl": "TRIM_ELEVATOR",
+      "syncMode": "continuous",
+      "interpolate": true,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "B747_PACK_L",
+      "varType": "lvar",
+      "canonicalControl": "PACK_1",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_PACK_R",
+      "varType": "lvar",
+      "canonicalControl": "PACK_2",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_BLEED_ENG_1",
+      "varType": "lvar",
+      "canonicalControl": "BLEED_1",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_BLEED_ENG_2",
+      "varType": "lvar",
+      "canonicalControl": "BLEED_2",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_HYD_PUMP_1",
+      "varType": "lvar",
+      "canonicalControl": "HYD_PUMP_1",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_HYD_PUMP_2",
+      "varType": "lvar",
+      "canonicalControl": "HYD_PUMP_2",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_HYD_PUMP_3",
+      "varType": "lvar",
+      "canonicalControl": "HYD_PUMP_3",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_GEN_1",
+      "varType": "lvar",
+      "canonicalControl": "ELEC_GEN_1",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_GEN_2",
+      "varType": "lvar",
+      "canonicalControl": "ELEC_GEN_2",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_BATTERY_SW",
+      "varType": "lvar",
+      "canonicalControl": "BATTERY_MASTER",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_SEATBELT_SIGN",
+      "varType": "lvar",
+      "canonicalControl": "SEATBELT_SIGN",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_NO_SMOKING_SIGN",
+      "varType": "lvar",
+      "canonicalControl": "NO_SMOKING_SIGN",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_COM_1_FREQ",
+      "varType": "lvar",
+      "canonicalControl": "COM1_FREQ",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "B747_NAV_1_FREQ",
+      "varType": "lvar",
+      "canonicalControl": "NAV1_FREQ",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "B747_XPNDR_CODE",
+      "varType": "lvar",
+      "canonicalControl": "TRANSPONDER_CODE",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_BARO_1",
+      "varType": "lvar",
+      "canonicalControl": "BAROMETER_SETTING",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "B747_CDU_1_INPUT",
+      "varType": "lvar",
+      "canonicalControl": "FMS_1",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": false
+    },
+    {
+      "varName": "B747_DOOR_PAX_1",
+      "varType": "lvar",
+      "canonicalControl": "DOOR_MAIN",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    },
+    {
+      "varName": "B747_DOOR_CARGO_FWD",
+      "varType": "lvar",
+      "canonicalControl": "DOOR_CARGO",
+      "syncMode": "on-change",
+      "interpolate": false,
+      "confidence": 1.0,
+      "isDiscrete": true
+    }
+  ]
+}

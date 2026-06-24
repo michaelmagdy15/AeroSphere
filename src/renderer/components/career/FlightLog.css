@@ -1,0 +1,208 @@
+/* ============================================================
+   FlightLog — Flight history table
+   ============================================================ */
+
+.flight-log {
+  padding: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ---- Header ---- */
+.flight-log__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  animation: flFadeIn 0.4s ease both;
+}
+
+.flight-log__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.flight-log__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 var(--space-sm);
+  background: var(--accent-blue-dim);
+  color: var(--accent-blue);
+  border-radius: 999px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border: 1px solid hsla(210, 100%, 60%, 0.2);
+}
+
+/* ---- Table ---- */
+.flight-log__table {
+  width: 100%;
+  border-collapse: collapse;
+  animation: flFadeIn 0.4s ease 0.08s both;
+}
+
+.flight-log__th {
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border-glass);
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.flight-log__th:hover {
+  color: var(--text-secondary);
+}
+
+.flight-log__th--active {
+  color: var(--accent-blue);
+}
+
+.flight-log__sort-arrow {
+  margin-left: var(--space-xs);
+  font-size: 0.6rem;
+}
+
+/* ---- Rows ---- */
+.flight-log__row {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.flight-log__row:hover {
+  background: var(--bg-glass-hover);
+}
+
+.flight-log__td {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.05);
+  white-space: nowrap;
+}
+
+.flight-log__td-id {
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+}
+
+.flight-log__route {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-weight: var(--font-weight-medium);
+}
+
+.flight-log__payout {
+  font-weight: var(--font-weight-semibold);
+  color: var(--accent-green);
+}
+
+/* Landing Rate Colors */
+.flight-log__rate--green { color: var(--accent-green); font-weight: var(--font-weight-semibold); }
+.flight-log__rate--amber { color: var(--accent-amber); font-weight: var(--font-weight-semibold); }
+.flight-log__rate--red   { color: var(--accent-red);   font-weight: var(--font-weight-semibold); }
+
+/* Status Badges */
+.flight-log__status {
+  display: inline-block;
+  padding: 2px var(--space-sm);
+  border-radius: 999px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: capitalize;
+}
+
+.flight-log__status--completed {
+  background: var(--accent-green-dim);
+  color: var(--accent-green);
+  border: 1px solid hsla(160, 100%, 45%, 0.2);
+}
+
+.flight-log__status--diverted {
+  background: var(--accent-amber-dim);
+  color: var(--accent-amber);
+  border: 1px solid hsla(35, 100%, 55%, 0.2);
+}
+
+.flight-log__status--crashed {
+  background: var(--accent-red-dim);
+  color: var(--accent-red);
+  border: 1px solid hsla(0, 85%, 60%, 0.2);
+}
+
+.flight-log__status--aborted {
+  background: hsla(0, 85%, 60%, 0.08);
+  color: hsl(0, 60%, 55%);
+  border: 1px solid hsla(0, 85%, 60%, 0.15);
+}
+
+/* ---- Expanded Detail Row ---- */
+.flight-log__expanded-row td {
+  padding: 0;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.flight-log__expanded-panel {
+  display: flex;
+  gap: var(--space-xl);
+  padding: var(--space-md) var(--space-lg);
+  background: rgba(15, 23, 42, 0.4);
+  animation: flExpandIn 0.25s ease both;
+}
+
+.flight-log__expanded-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.flight-log__expanded-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.flight-log__expanded-value {
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ---- Empty State ---- */
+.flight-log__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-2xl);
+  color: var(--text-muted);
+}
+
+.flight-log__empty-text {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ---- Animations ---- */
+@keyframes flFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes flExpandIn {
+  from { opacity: 0; max-height: 0; }
+  to   { opacity: 1; max-height: 200px; }
+}

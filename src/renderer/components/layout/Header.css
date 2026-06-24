@@ -1,0 +1,133 @@
+/* ============================================================
+   Header — Top status bar
+   ============================================================ */
+
+.header {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-lg);
+  background: rgba(10, 14, 23, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-glass);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  /* Electron window drag */
+  -webkit-app-region: drag;
+}
+
+.header button,
+.header a {
+  -webkit-app-region: no-drag;
+}
+
+/* ── Title ───────────────────────────────────────────────── */
+.header__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.header__title-text {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.header__title-badge {
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  color: var(--accent-blue);
+  background: var(--accent-blue-dim);
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Status cluster ──────────────────────────────────────── */
+.header__status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.header__status-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid var(--border-glass);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  font-feature-settings: 'tnum' 1;
+}
+
+.header__status-badge:hover {
+  border-color: var(--border-glass-hover);
+  background: rgba(15, 23, 42, 0.7);
+}
+
+/* ── Status dot (LED) ────────────────────────────────────── */
+.header__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.header__status-dot--connected {
+  background: radial-gradient(circle at 35% 35%, hsl(160, 100%, 60%), hsl(160, 100%, 40%));
+  box-shadow: 0 0 8px hsla(160, 100%, 45%, 0.5);
+  animation: statusPulse 3s ease-in-out infinite;
+  color: hsla(160, 100%, 45%, 0.3);
+}
+
+.header__status-dot--disconnected {
+  background: radial-gradient(circle at 35% 35%, hsl(0, 85%, 65%), hsl(0, 85%, 50%));
+  box-shadow: 0 0 8px hsla(0, 85%, 60%, 0.4);
+}
+
+/* ── Status labels ───────────────────────────────────────── */
+.header__status-label {
+  color: var(--text-muted);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.header__status-value {
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+  font-feature-settings: 'tnum' 1;
+}
+
+.header__status-value--good {
+  color: var(--accent-green);
+}
+
+.header__status-value--warn {
+  color: var(--accent-amber);
+}
+
+.header__status-value--bad {
+  color: var(--accent-red);
+}
+
+/* ── Status badge with icon ──────────────────────────────── */
+.header__status-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}

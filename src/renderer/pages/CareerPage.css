@@ -1,0 +1,57 @@
+/* ============================================================
+   CareerPage — Career Mode
+   ============================================================ */
+
+.career-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  min-height: 100%;
+}
+
+/* ── Sub-navigation ───────────────────────────────────────── */
+.career-nav {
+  display: flex;
+  gap: var(--space-xs);
+  padding: var(--space-xs);
+  background: var(--bg-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  animation: fadeInUp 0.4s ease-out both;
+}
+
+.career-nav__tab {
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.career-nav__tab:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.career-nav__tab--active {
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Tab Content ──────────────────────────────────────────── */
+.career-content {
+  flex: 1;
+  animation: fadeInUp 0.35s ease-out both;
+}
+
+/* ── Wrapper for Pro overlay ──────────────────────────────── */
+.career-page-wrapper {
+  position: relative;
+  min-height: 100%;
+}

@@ -1,0 +1,85 @@
+/* ── RoleSelector ── */
+
+.role-selector {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.role-selector--disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ── Card ── */
+
+.role-selector__card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-lg);
+  background: var(--bg-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  text-align: center;
+  color: var(--text-primary);
+  transition: all 0.25s ease;
+}
+
+.role-selector__card:hover {
+  border-color: var(--border-glass-hover);
+  background: var(--bg-glass-hover);
+  transform: translateY(-1px);
+}
+
+.role-selector__card:active {
+  transform: translateY(0);
+}
+
+.role-selector__card:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+/* ── Active Card ── */
+
+.role-selector__card--active {
+  border-color: var(--border-active);
+  box-shadow: var(--shadow-glow-blue);
+  background: var(--accent-blue-dim);
+  transform: translateY(-2px);
+}
+
+.role-selector__card--active:hover {
+  transform: translateY(-2px);
+  background: var(--accent-blue-dim);
+  border-color: var(--border-active);
+}
+
+/* ── Icon ── */
+
+.role-selector__icon {
+  margin-bottom: var(--space-xs);
+  transition: transform 0.25s ease;
+}
+
+.role-selector__card:hover .role-selector__icon {
+  transform: scale(1.08);
+}
+
+/* ── Text ── */
+
+.role-selector__label {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.role-selector__desc {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}

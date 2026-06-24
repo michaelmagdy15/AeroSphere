@@ -1,0 +1,49 @@
+.gauge-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  user-select: none;
+}
+
+.gauge-svg {
+  overflow: visible;
+}
+
+.gauge-track {
+  stroke: var(--text-muted);
+  opacity: 0.1;
+}
+
+.gauge-arc {
+  transition:
+    stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 0.5s ease;
+  filter: drop-shadow(0 0 6px var(--gauge-glow-color, oklch(0.7 0.15 220)))
+    drop-shadow(0 0 14px var(--gauge-glow-color, oklch(0.7 0.15 220)));
+}
+
+.gauge-value {
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  paint-order: stroke;
+  text-shadow:
+    0 0 10px oklch(1 0 0 / 0.15),
+    0 0 24px var(--gauge-glow-color, oklch(0.7 0.15 220 / 0.25));
+}
+
+.gauge-unit {
+  font-weight: 500;
+  opacity: 0.6;
+}
+
+.gauge-label {
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}

@@ -1,0 +1,207 @@
+/* ============================================================
+   BaseMap — World map with bases and fleet locations
+   ============================================================ */
+
+.base-map {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ---- Header ---- */
+.base-map__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: bmFadeIn 0.4s ease both;
+}
+
+.base-map__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.base-map__legend {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.base-map__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+.base-map__legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.base-map__legend-dot--current { background: var(--accent-blue); box-shadow: 0 0 6px var(--accent-blue); }
+.base-map__legend-dot--home { background: var(--accent-green); }
+.base-map__legend-dot--fleet { background: var(--accent-amber); }
+
+/* ---- SVG Container ---- */
+.base-map__svg-container {
+  position: relative;
+  overflow: hidden;
+  animation: bmFadeIn 0.5s ease 0.08s both;
+}
+
+.base-map__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Grid */
+.base-map__grid-line {
+  stroke: rgba(148, 163, 184, 0.06);
+  stroke-width: 0.5;
+}
+
+/* Continents */
+.base-map__continent {
+  fill: hsl(220, 20%, 14%);
+  stroke: rgba(148, 163, 184, 0.15);
+  stroke-width: 1;
+}
+
+/* Markers */
+.base-map__marker {
+  transition: r 0.2s ease;
+}
+
+.base-map__marker:hover {
+  r: 7;
+}
+
+.base-map__marker--current {
+  fill: var(--accent-blue);
+  filter: drop-shadow(0 0 4px var(--accent-blue));
+}
+
+.base-map__marker--home {
+  fill: var(--accent-green);
+  filter: drop-shadow(0 0 3px var(--accent-green));
+}
+
+.base-map__marker--fleet {
+  fill: var(--accent-amber);
+  filter: drop-shadow(0 0 3px var(--accent-amber));
+}
+
+/* Pulse */
+.base-map__pulse {
+  fill: none;
+  stroke: var(--accent-blue);
+  stroke-width: 2;
+  opacity: 0;
+  animation: bmPulse 2s ease-out infinite;
+}
+
+/* Labels */
+.base-map__label {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 7px;
+  fill: var(--text-secondary);
+  pointer-events: none;
+  font-weight: 600;
+}
+
+/* ---- Info Panel ---- */
+.base-map__info-panel {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  width: 220px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  animation: bmPanelIn 0.3s ease both;
+  z-index: 10;
+}
+
+.base-map__info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.base-map__info-icao {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+.base-map__info-close {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border-glass);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.base-map__info-close:hover {
+  color: var(--text-primary);
+  border-color: var(--border-glass-hover);
+  background: var(--bg-glass-hover);
+}
+
+.base-map__info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.base-map__info-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.base-map__info-value {
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ---- Animations ---- */
+@keyframes bmFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bmPulse {
+  0%   { r: 5;  opacity: 0.8; }
+  100% { r: 20; opacity: 0; }
+}
+
+@keyframes bmPanelIn {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
