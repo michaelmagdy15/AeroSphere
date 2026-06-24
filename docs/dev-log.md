@@ -48,6 +48,35 @@ AeroSphere Studio compiles fully using TypeScript strict mode. The remaining typ
 - **Port Mapping**: Explicitly bound the container port `--port 8080` to resolve Buildpacks Dockerfile detection conflicts.
 - **URL**: `https://aerosphere-profiles-430356395102.us-central1.run.app`
 - **Firestore**: Successfully linked to the `db-aerosphere` database.
+## 2026-06-24 — Built-in Auto-Updater & v0.2.1 Release Phase
 
+### Context
+Implemented a built-in application auto-updater that downloads updates in the background and notifies the user with a premium glassmorphic toast before applying. Resolved critical startup blocks and wired real-time telemetry to the header controls.
 
+### Decisions & Implementation Detail
+
+#### 1. Real-Time Telemetry Header Wiring
+- **Action**: Modified `App.tsx` to consume telemetry from the `useSimConnect` and `useLOD` hooks, dynamically passing `simConnected`, `lodState.currentFPS`, and `telemetry.altitude` to the `<Header />` component, replacing the previous static/hardcoded status values.
+
+#### 2. Preload API & Hook Alignment
+- **Discovery**: React hooks in the renderer call generic `window.aerosphere.invoke`, `on`, and `off` functions, but `preload.ts` context bridge only exposed specific subsystem endpoints. This resulted in runtime undefined errors when accessing IPC.
+- **Action**: Updated `preload.ts` to expose generic `invoke`, `on`, and `off` methods, maintaining a local listener callback mapping to cleanly subscribe and unsubscribe event handlers without memory leaks.
+
+#### 3. Firebase Auth Initialization Block
+- **Discovery**: In development mode, the app was stuck on a dark loading spinner. The main process threw an unhandled rejection because `FirebaseAuthManager` attempted to initialize Firebase with empty environment variables (`process.env.FIREBASE_API_KEY ?? ''`), which blocked IPC handlers from registering.
+- **Action**: Modified `FirebaseAuthManager.ts` to import and fall back to the default bundled `FIREBASE_CONFIG` when environmental overrides are absent, allowing compilation and startup in both dev and production.
+
+#### 4. Preload Path Resolution
+- **Discovery**: The BrowserWindow configuration was looking for `../preload/index.js`, but the packaging build compiled `preload.ts` to `../preload/preload.js`.
+- **Action**: Updated the preload path inside `src/main/index.ts` to point to the correct output file `preload.js`.
+
+#### 5. Installer File Naming Auto-Updater Alignment
+- **Discovery**: `electron-builder` sanitizes spaces in update manifests (`latest.yml`), pointing to `AeroSphere-Studio-Setup-0.2.1.exe`, but outputs the installer binary using the product name with spaces (`AeroSphere Studio Setup 0.2.1.exe`). This would lead to a 404 download error in the auto-updater.
+- **Action**: Renamed the local executable to `AeroSphere-Studio-Setup-0.2.1.exe` prior to staging and uploading to ensure update URLs resolve correctly.
+
+### Verification & Releases
+- Ran `npm run typecheck`: Completed successfully with `0` errors.
+- Ran `npm run build`: Completed successfully.
+- Ran `npx electron-builder` to package installer `0.2.1`.
+- Committed, tagged `v0.2.1`, pushed, and uploaded `AeroSphere-Studio-Setup-0.2.1.exe` and `latest.yml` to the GitHub release.
 

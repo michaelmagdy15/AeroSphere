@@ -22,15 +22,16 @@ import {
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { app as electronApp } from 'electron';
+import { FIREBASE_CONFIG as DEFAULT_FIREBASE_CONFIG } from '../../shared/firebase-config';
 
 // ── Firebase config — loaded from environment or bundled config ──
 const FIREBASE_CONFIG = {
-  apiKey: process.env.FIREBASE_API_KEY ?? '',
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN ?? '',
-  projectId: process.env.FIREBASE_PROJECT_ID ?? '',
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET ?? '',
-  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID ?? '',
-  appId: process.env.FIREBASE_APP_ID ?? '',
+  apiKey: process.env.FIREBASE_API_KEY || DEFAULT_FIREBASE_CONFIG.apiKey,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN || DEFAULT_FIREBASE_CONFIG.authDomain,
+  projectId: process.env.FIREBASE_PROJECT_ID || DEFAULT_FIREBASE_CONFIG.projectId,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET || DEFAULT_FIREBASE_CONFIG.storageBucket,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || DEFAULT_FIREBASE_CONFIG.messagingSenderId,
+  appId: process.env.FIREBASE_APP_ID || DEFAULT_FIREBASE_CONFIG.appId,
 };
 
 const TOKEN_FILE = path.join(electronApp.getPath('userData'), '.auth_refresh');
