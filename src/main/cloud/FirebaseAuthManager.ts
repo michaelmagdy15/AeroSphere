@@ -15,6 +15,9 @@ import {
   signOut as fbSignOut,
   onAuthStateChanged,
   Unsubscribe,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
 } from 'firebase/auth';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
@@ -67,6 +70,19 @@ export class FirebaseAuthManager {
       default:
         throw new Error(`Unsupported provider: ${provider}`);
     }
+  }
+
+  async signUpWithEmail(email: string, password: string, username: string): Promise<User> {
+    const cred = await createUserWithEmailAndPassword(this.auth, email, password);
+    await updateProfile(cred.user, { displayName: username });
+    this.storeRefreshToken(cred.user);
+    return cred.user;
+  }
+
+  async signInWithEmail(email: string, password: string): Promise<User> {
+    const cred = await signInWithEmailAndPassword(this.auth, email, password);
+    this.storeRefreshToken(cred.user);
+    return cred.user;
   }
 
   async signOut(): Promise<void> {

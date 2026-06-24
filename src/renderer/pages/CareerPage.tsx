@@ -20,7 +20,7 @@ const CAREER_TABS = [
 type CareerTabId = (typeof CAREER_TABS)[number]['id'];
 
 /** Set to true to gate this page behind a Pro subscription */
-const REQUIRE_PRO = true;
+const REQUIRE_PRO = false;
 const IS_PRO = false; // TODO: wire to real subscription state
 
 function ProOverlay() {

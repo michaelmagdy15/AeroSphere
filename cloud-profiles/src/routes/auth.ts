@@ -17,6 +17,8 @@ interface UserDoc {
   profileCount: number;
   reputation: number;
   joinedAt: FirebaseFirestore.Timestamp;
+  purchasedCareer?: boolean;
+  purchasedSharedCockpit?: boolean;
 }
 
 // POST /api/auth/register — create user profile in Firestore
@@ -37,10 +39,12 @@ router.post('/register', requireAuth, async (req: Request, res: Response): Promi
     profileCount: 0,
     reputation: 0,
     joinedAt: FieldValue.serverTimestamp() as FirebaseFirestore.Timestamp,
+    purchasedCareer: false,
+    purchasedSharedCockpit: false,
   };
 
   await ref.set(user);
-  res.status(201).json(user);
+  res.status(201).json({ ...user, isPro: true, hasCareer: true, hasSharedCockpit: true });
 });
 
 // GET /api/auth/me — get current user profile
@@ -53,7 +57,48 @@ router.get('/me', requireAuth, async (req: Request, res: Response): Promise<void
     return;
   }
 
-  res.json(doc.data());
+  const data = doc.data()!;
+  const joinedAtDate = data.joinedAt?.toDate ? data.joinedAt.toDate() : new Date();
+  const isTrial = (Date.now() - joinedAtDate.getTime()) < 30 * 24 * 60 * 60 * 1000;
+
+  const hasCareer = isTrial || data.purchasedCareer === true;
+  const hasSharedCockpit = isTrial || data.purchasedSharedCockpit === true;
+
+  res.json({
+    ...data,
+    isTrial,
+    isPro: isTrial, // for backward compatibility
+    hasCareer,
+    hasSharedCockpit,
+  });
+});
+
+// POST /api/auth/purchase — purchase a feature
+router.post('/purchase', requireAuth, async (req: Request, res: Response): Promise<void> => {
+  const { uid } = req.user!;
+  const { feature } = req.body;
+
+  if (feature !== 'career' && feature !== 'cockpit') {
+    res.status(400).json({ error: "Invalid feature. Must be 'career' or 'cockpit'" });
+    return;
+  }
+
+  const ref = db().collection('users').doc(uid);
+  const doc = await ref.get();
+  if (!doc.exists) {
+    res.status(404).json({ error: 'User profile not found' });
+    return;
+  }
+
+  const updateData: Record<string, boolean> = {};
+  if (feature === 'career') {
+    updateData.purchasedCareer = true;
+  } else {
+    updateData.purchasedSharedCockpit = true;
+  }
+
+  await ref.update(updateData);
+  res.json({ success: true, ...doc.data(), ...updateData });
 });
 
 export default router;

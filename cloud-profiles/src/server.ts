@@ -5,6 +5,7 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+import path from 'path';
 import { initializeApp, applicationDefault } from 'firebase-admin/app';
 import profileRoutes from './routes/profiles';
 import authRoutes from './routes/auth';
@@ -16,7 +17,7 @@ initializeApp({ credential: applicationDefault() });
 const app = express();
 
 // ── Middleware ──
-app.use(helmet());
+app.use(helmet({ contentSecurityPolicy: false }));
 app.use(
   cors({
     origin: [
@@ -28,6 +29,9 @@ app.use(
   })
 );
 app.use(express.json({ limit: '2mb' }));
+
+// ── Serve Dashboard static files ──
+app.use(express.static(path.join(__dirname, '../public')));
 
 // ── Routes ──
 app.use('/api/profiles', profileRoutes);

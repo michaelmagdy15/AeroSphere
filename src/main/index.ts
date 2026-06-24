@@ -27,6 +27,7 @@ import CareerDatabase from './career/CareerDatabase';
 
 import { getSettingsStore } from './settings/SettingsStore';
 import * as WASMInstaller from './wasm-installer/WASMInstaller';
+import { FirebaseAuthManager } from './cloud/FirebaseAuthManager';
 
 import { registerAllHandlers, type Managers } from './ipc/handlers';
 
@@ -256,6 +257,12 @@ app.whenReady().then(() => {
   // Apply default role from settings
   controlAuthority.setRole(settings.get('defaultRole'));
 
+  // 7b. Authentication Manager
+  const auth = new FirebaseAuthManager();
+  auth.onAuthStateChanged((state) => {
+    mainWindow?.webContents.send(IPC.AUTH_STATE, state);
+  });
+
   // 8. Register ALL IPC handlers
   const managers: Managers = {
     simConnect,
@@ -268,6 +275,7 @@ app.whenReady().then(() => {
     profileManager,
     careerDb,
     settings,
+    auth,
   };
   registerAllHandlers(managers);
 

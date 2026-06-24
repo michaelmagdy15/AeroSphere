@@ -27,6 +27,23 @@ const api = {
     ipcRenderer.on(IPC.SIM_STATUS, handler);
     return () => ipcRenderer.removeListener(IPC.SIM_STATUS, handler);
   },
+
+  // Window Controls
+  minimize: (): Promise<void> => ipcRenderer.invoke(IPC.APP_MINIMIZE),
+  close: (): Promise<void> => ipcRenderer.invoke(IPC.APP_CLOSE),
+
+  // Authentication
+  signUp: (email: string, password: string, username: string): Promise<unknown> =>
+    ipcRenderer.invoke(IPC.AUTH_SIGN_UP, email, password, username),
+  signIn: (email: string, password: string): Promise<unknown> =>
+    ipcRenderer.invoke(IPC.AUTH_SIGN_IN, email, password),
+  signOut: (): Promise<void> => ipcRenderer.invoke(IPC.AUTH_SIGN_OUT),
+  getAuthState: (): Promise<unknown> => ipcRenderer.invoke(IPC.AUTH_STATE),
+  onAuthState: (cb: (state: any) => void) => {
+    const handler = (_e: Electron.IpcRendererEvent, state: any) => cb(state);
+    ipcRenderer.on(IPC.AUTH_STATE, handler);
+    return () => ipcRenderer.removeListener(IPC.AUTH_STATE, handler);
+  },
 } as const;
 
 export type AeroSphereAPI = typeof api;

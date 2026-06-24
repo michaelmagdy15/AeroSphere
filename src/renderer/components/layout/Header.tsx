@@ -65,6 +65,29 @@ export function Header({ simConnected, fps, altitude }: HeaderProps) {
           </span>
         </div>
       </div>
+
+      {/* Window Controls */}
+      <div className="header__controls">
+        <button
+          className="header__ctrl-btn header__ctrl-btn--minimize"
+          title="Minimize"
+          onClick={() => (window.aerosphere as any).minimize()}
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+          </svg>
+        </button>
+        <button
+          className="header__ctrl-btn header__ctrl-btn--close"
+          title="Close"
+          onClick={() => (window.aerosphere as any).close()}
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
     </header>
   );
 }

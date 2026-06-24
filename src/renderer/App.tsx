@@ -1,7 +1,8 @@
-import { useState, lazy, Suspense, type ComponentType } from 'react';
+import { useState, useEffect, lazy, Suspense, type ComponentType } from 'react';
 import { Sidebar } from './components/layout/Sidebar';
 import { Header } from './components/layout/Header';
 import { GlassPanel } from './components/layout/GlassPanel';
+import { AuthScreen } from './components/common/AuthScreen';
 import './App.css';
 
 /* ── Lazy page imports — resilient to missing files ─────── */
@@ -41,6 +42,30 @@ type PageId = 'dashboard' | 'lod-engine' | 'cockpit' | 'career' | 'settings';
 
 export function App() {
   const [activePage, setActivePage] = useState<PageId>('dashboard');
+  const [user, setUser] = useState<any>(null);
+  const [authLoading, setAuthLoading] = useState(true);
+
+  useEffect(() => {
+    const api = (window as any).aerosphere;
+    if (!api) {
+      setAuthLoading(false);
+      return;
+    }
+
+    api.getAuthState().then((state: any) => {
+      setUser(state?.user || null);
+      setAuthLoading(false);
+    });
+
+    const unsubscribe = api.onAuthState((state: any) => {
+      setUser(state?.user || null);
+      setAuthLoading(false);
+    });
+
+    return () => {
+      if (typeof unsubscribe === 'function') unsubscribe();
+    };
+  }, []);
 
   const renderPage = () => {
     switch (activePage) {
@@ -58,6 +83,14 @@ export function App() {
         return <DashboardPage onNavigate={(p: string) => setActivePage(p as PageId)} />;
     }
   };
+
+  if (authLoading) {
+    return <PageSpinner />;
+  }
+
+  if (!user) {
+    return <AuthScreen onSuccess={() => {}} />;
+  }
 
   return (
     <div className="app-layout">

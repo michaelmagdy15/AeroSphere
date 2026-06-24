@@ -38,6 +38,14 @@ export const IPC = {
   // App
   APP_READY: 'app:ready',
   APP_VERSION: 'app:version',
+  APP_MINIMIZE: 'app:minimize',
+  APP_CLOSE: 'app:close',
+
+  // Auth
+  AUTH_SIGN_IN: 'auth:sign-in',
+  AUTH_SIGN_UP: 'auth:sign-up',
+  AUTH_SIGN_OUT: 'auth:sign-out',
+  AUTH_STATE: 'auth:state',
 } as const;
 
 export type IPCChannel = typeof IPC[keyof typeof IPC];

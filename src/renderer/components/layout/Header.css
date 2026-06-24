@@ -131,3 +131,40 @@
   color: var(--text-muted);
   flex-shrink: 0;
 }
+
+/* ── Window Controls ─────────────────────────────────────── */
+.header__controls {
+  display: flex;
+  align-items: center;
+  margin-left: var(--space-md);
+  -webkit-app-region: no-drag;
+}
+
+.header__ctrl-btn {
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.header__ctrl-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.header__ctrl-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.header__ctrl-btn--close:hover {
+  background: hsl(0, 75%, 45%);
+  color: #ffffff;
+}

@@ -15,6 +15,7 @@ import type ControlAuthority from '../shared-cockpit/ControlAuthority';
 import type ProfileManager from '../shared-cockpit/ProfileManager';
 import type CareerDatabase from '../career/CareerDatabase';
 import type { SettingsStore } from '../settings/SettingsStore';
+import type { FirebaseAuthManager } from '../cloud/FirebaseAuthManager';
 
 export interface Managers {
   simConnect: SimConnectManager;
@@ -27,12 +28,13 @@ export interface Managers {
   profileManager: ProfileManager;
   careerDb: CareerDatabase;
   settings: SettingsStore;
+  auth: FirebaseAuthManager;
 }
 
 export function registerAllHandlers(managers: Managers): void {
   const {
     lodPatcher, lodController, signaling, peerManager,
-    autoLearn, controlAuthority, profileManager, careerDb, settings,
+    autoLearn, controlAuthority, profileManager, careerDb, settings, auth,
   } = managers;
 
   // ── LOD ──
@@ -146,5 +148,39 @@ export function registerAllHandlers(managers: Managers): void {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const { version } = require('../../../package.json') as { version: string };
     return version;
+  });
+
+  ipcMain.handle(IPC.APP_MINIMIZE, () => {
+    const { BrowserWindow } = require('electron');
+    const win = BrowserWindow.getFocusedWindow();
+    if (win) win.minimize();
+  });
+
+  ipcMain.handle(IPC.APP_CLOSE, () => {
+    const { BrowserWindow } = require('electron');
+    const win = BrowserWindow.getFocusedWindow();
+    if (win) win.close();
+  });
+
+  // ── Auth ──
+
+  ipcMain.handle(IPC.AUTH_SIGN_UP, async (_e, email, password, username) => {
+    return auth.signUpWithEmail(email, password, username);
+  });
+
+  ipcMain.handle(IPC.AUTH_SIGN_IN, async (_e, email, password) => {
+    return auth.signInWithEmail(email, password);
+  });
+
+  ipcMain.handle(IPC.AUTH_SIGN_OUT, async () => {
+    return auth.signOut();
+  });
+
+  ipcMain.handle(IPC.AUTH_STATE, () => {
+    const user = auth.getCurrentUser();
+    return {
+      user: user ? { uid: user.uid, displayName: user.displayName, email: user.email } : null,
+      loading: false,
+    };
   });
 }

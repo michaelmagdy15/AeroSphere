@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AeroSphere Studio — Pilot Account Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow orbs -->
+  <div class="ambient-glow orb-1"></div>
+  <div class="ambient-glow orb-2"></div>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="toast"></div>
+
+  <div id="app" class="app-container">
+    <!-- ── AUTHENTICATION SCREEN (SIGN IN / SIGN UP) ── -->
+    <div id="auth-screen" class="glass-card auth-card active">
+      <div class="auth-header">
+        <h1 class="logo-text">AeroSphere <span>Studio</span></h1>
+        <p class="subtitle">Pilot Account Portal</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button id="tab-signin" class="tab-btn active">Sign In</button>
+        <button id="tab-signup" class="tab-btn">Sign Up</button>
+      </div>
+
+      <!-- Sign In Form -->
+      <form id="form-signin" class="auth-form active">
+        <div class="input-group">
+          <label for="signin-email">Email</label>
+          <input type="email" id="signin-email" placeholder="pilot@aerosphere.app" required>
+        </div>
+        <div class="input-group">
+          <label for="signin-password">Password</label>
+          <input type="password" id="signin-password" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-pulse">
+          <span class="btn-text">Sign In to Cockpit</span>
+          <span class="spinner"></span>
+        </button>
+      </form>
+
+      <!-- Sign Up Form -->
+      <form id="form-signup" class="auth-form">
+        <div class="input-group">
+          <label for="signup-username">Callsign (Username)</label>
+          <input type="text" id="signup-username" placeholder="Maverick" required>
+        </div>
+        <div class="input-group">
+          <label for="signup-email">Email Address</label>
+          <input type="email" id="signup-email" placeholder="pilot@aerosphere.app" required>
+        </div>
+        <div class="input-group">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" placeholder="Min. 8 characters" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-pulse">
+          <span class="btn-text">Create Pilot Account</span>
+          <span class="spinner"></span>
+        </button>
+      </form>
+    </div>
+
+    <!-- ── DASHBOARD SCREEN (LOGGED IN) ── -->
+    <div id="dashboard-screen" class="dashboard-layout">
+      <!-- Navbar -->
+      <header class="glass-navbar">
+        <div class="navbar-brand">
+          <h2 class="logo-text">AeroSphere <span>Studio</span></h2>
+        </div>
+        <div class="user-menu">
+          <div class="user-badge">
+            <span class="avatar">👨‍✈️</span>
+            <span id="user-display-name" class="username">Pilot</span>
+            <span id="user-tier" class="badge">Trial</span>
+          </div>
+          <button id="btn-logout" class="btn btn-secondary">Sign Out</button>
+        </div>
+      </header>
+
+      <!-- Main Dashboard Grid -->
+      <main class="dashboard-grid">
+        <!-- Sidebar / User Info -->
+        <section class="glass-card user-info-card">
+          <h3>Pilot Credentials</h3>
+          <div class="profile-details">
+            <div class="detail-row">
+              <span class="label">Email</span>
+              <span id="profile-email" class="val">-</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Joined</span>
+              <span id="profile-joined" class="val">-</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Profiles Shared</span>
+              <span id="profile-count" class="val">0</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Reputation</span>
+              <span id="profile-reputation" class="val">0 XP</span>
+            </div>
+          </div>
+
+          <!-- Subscription / Trial Panel -->
+          <div class="trial-panel">
+            <div class="trial-header">
+              <span class="trial-title">30-Day Trial Status</span>
+              <span id="trial-days-badge" class="trial-days">- days left</span>
+            </div>
+            <div class="progress-bar-container">
+              <div id="trial-progress" class="progress-bar" style="width: 0%"></div>
+            </div>
+            <p id="trial-description" class="trial-desc">Enjoy full access to all features during your trial period.</p>
+          </div>
+        </section>
+
+        <!-- Main Features & Billing Management -->
+        <section class="features-section">
+          <h3 class="section-title">Feature Upgrades</h3>
+          <div class="features-grid">
+            <!-- Career Mode Upgrade Card -->
+            <div class="glass-card feature-card" id="card-career">
+              <div class="feature-header">
+                <span class="feature-icon">🎯</span>
+                <span id="status-career" class="status-badge status-trial">Free Trial</span>
+              </div>
+              <h4>Career Mode</h4>
+              <p>Build your airline empire, complete procedural missions, lease planes, and track your co-op flight economy.</p>
+              <div class="upgrade-action">
+                <span class="price">$5.00 <span class="one-time">One-time payment</span></span>
+                <button id="btn-buy-career" class="btn btn-upgrade">Unlock Feature</button>
+              </div>
+            </div>
+
+            <!-- Shared Cockpit Upgrade Card -->
+            <div class="glass-card feature-card" id="card-cockpit">
+              <div class="feature-header">
+                <span class="feature-icon">🤝</span>
+                <span id="status-cockpit" class="status-badge status-trial">Free Trial</span>
+              </div>
+              <h4>Shared Cockpit</h4>
+              <p>Fly with friends in real-time, synchronize complex aircraft controls (LVars/B-Events), and communicate via VoIP.</p>
+              <div class="upgrade-action">
+                <span class="price">$5.00 <span class="one-time">One-time payment</span></span>
+                <button id="btn-buy-cockpit" class="btn btn-upgrade">Unlock Feature</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- ── CHECKOUT MODAL ── -->
+  <div id="checkout-modal" class="modal-backdrop">
+    <div class="glass-card modal-panel animate-zoom-in">
+      <button id="btn-modal-close" class="modal-close-btn">&times;</button>
+      <div class="modal-header">
+        <h3 id="checkout-title">Unlock Feature</h3>
+        <p class="subtitle">Complete your payment details</p>
+      </div>
+
+      <div class="payment-summary">
+        <div class="summary-item">
+          <span id="checkout-item-name">Career Mode Lifetime License</span>
+          <span class="price">$5.00</span>
+        </div>
+      </div>
+
+      <!-- Credit Card Mock Form -->
+      <form id="form-checkout" class="checkout-form">
+        <div class="input-group">
+          <label>Cardholder Name</label>
+          <input type="text" placeholder="Pilot Maverick" required>
+        </div>
+        <div class="input-group">
+          <label>Card Number</label>
+          <input type="text" placeholder="4000 1234 5678 9010" maxlength="19" required>
+        </div>
+        <div class="form-row">
+          <div class="input-group half">
+            <label>Expiry Date</label>
+            <input type="text" placeholder="MM/YY" maxlength="5" required>
+          </div>
+          <div class="input-group half">
+            <label>CVC</label>
+            <input type="password" placeholder="•••" maxlength="3" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-pulse">
+          <span class="btn-text">Confirm Payment ($5.00)</span>
+          <span class="spinner"></span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Client JavaScript -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
